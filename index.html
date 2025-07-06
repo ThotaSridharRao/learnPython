@@ -1265,7 +1265,7 @@ sys.stdout = _old_stdout # Restore original stdout
                 window.lessonData = data; // Make lesson data globally accessible if needed for validation
                 renderLesson(data);
                 updateUI();
-                codeInput.value = data.task.initialCode || `# Write your Python code here\n# Try: print('Hello, World!')`; // Set initial code
+                codeInput.value = data.task.initialCode || ``; // Set initial code
                 return true;
             } catch (error) {
                 console.error('Error loading lesson:', error);
