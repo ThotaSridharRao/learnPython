@@ -1,74 +1,75 @@
 {
   "id": 2,
   "chapter": 1,
-  "title": "Variables & Text",
+  "title": "Python Syntax and Indentation",
+  "conceptId": "getting-started/syntax-indentation",
   "difficulty": "beginner",
-  "estimatedTime": "10 minutes",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
   "theory": {
-    "concept": "Storing Information in Variables",
-    "introduction": "Now that you can print text, let's learn how to store information! Variables are like containers that hold data. Think of them as labeled boxes where you can store different types of information.",
-    "explanation": "A variable is a name that refers to a value. Instead of typing the same text multiple times, you can store it in a variable and use it whenever needed. This makes your code more organized and easier to change.",
+    "concept": "Understanding Python Syntax and Indentation",
+    "introduction": "Python is famous for its clean and readable syntax. It uses indentation (spaces or tabs) to define blocks of code, rather than braces like many other languages.",
+    "explanation": "Unlike languages like C or Java, Python relies on indentation to define blocks of code such as loops, conditionals, and functions. This makes the code easier to read but also means you must be consistent with your spacing.",
     "keyPoints": [
-      "Variables store data that can be used later",
-      "Variable names should be descriptive (like 'name' not 'x')",
-      "Use the = sign to assign values to variables",
-      "Variable names can't start with numbers",
-      "Use lowercase with underscores for multi-word names (my_name)"
+      "Python uses indentation (spaces or tabs) to group code",
+      "Indentation level must be consistent within a block",
+      "Each block of code typically indents 4 spaces",
+      "Colons `:` indicate the start of an indented block"
     ],
     "codeExamples": [
       {
-        "code": "name = 'Alice'\nprint(name)",
-        "explanation": "Store 'Alice' in a variable called 'name', then print it"
+        "code": "if True:\n    print(\"Indented correctly\")",
+        "explanation": "This is a valid if-statement with proper indentation"
       },
       {
-        "code": "message = 'Welcome to Python!'\nprint(message)",
-        "explanation": "Store a message in a variable and display it"
-      },
-      {
-        "code": "first_name = 'John'\nlast_name = 'Doe'\nprint(first_name)\nprint(last_name)",
-        "explanation": "You can have multiple variables and use them separately"
+        "code": "if True:\nprint(\"Missing indentation\")",
+        "explanation": "❌ This will cause an IndentationError"
       }
     ],
     "importantNotes": [
-      "📝 Choose meaningful variable names (use 'student_name' not 'sn')",
-      "🚫 Don't start variable names with numbers (age_21 is OK, 21_age is not)",
-      "🐍 Python convention: use lowercase with underscores (user_email)",
-      "💡 Variables can be changed - just assign a new value!"
+      "🧠 Consistency is key — don’t mix tabs and spaces",
+      "❌ Python will raise an error if indentation is wrong",
+      "💡 Use 4 spaces per level (most editors do this by default)"
+    ],
+    "references": [
+      "https://docs.python.org/3/reference/lexical_analysis.html#indentation"
     ]
   },
   "task": {
-    "objective": "Create a variable called 'your_name' with your name, then print it",
-    "description": "Practice storing text in a variable and displaying it. This teaches you the fundamental concept of variables in programming.",
-    "expectedOutput": "YourActualName",
-    "starterCode": "# Create a variable with your name\n# your_name = 'Put your name here'\n# Then print it\n",
+    "objective": "Write an if statement that uses correct indentation",
+    "description": "Practice writing a simple if-statement that correctly uses indentation to print a message.",
+    "expectedOutput": "Python is awesome!",
+    "starterCode": "# Fix the indentation below\nif True:\nprint(\"Python is awesome!\")",
     "hints": [
-      "Create a variable: your_name = 'YourName'",
-      "Then print it: print(your_name)",
-      "Replace 'YourName' with your actual name",
-      "Don't forget the quotes around your name"
+      "Use 4 spaces to indent the print statement",
+      "Make sure the print line is indented under the if line",
+      "Don’t forget the colon `:` at the end of the if statement"
     ]
   },
   "validation": {
-    "pattern": "your_name\\s*=\\s*['\"][^'\"]+['\"]\\s*\\n\\s*print\\s*\\(\\s*your_name\\s*\\)",
-    "checkVariableUsage": true,
-    "requiredVariable": "your_name",
+    "exactMatch": [
+      "if True:\n    print(\"Python is awesome!\")",
+      "if True:\n    print('Python is awesome!')"
+    ],
+    "outputMatch": "Python is awesome!",
     "allowedVariations": true,
     "commonErrors": [
       {
-        "error": "print('your_name')",
-        "message": "Don't put quotes around the variable name. Use: print(your_name)"
+        "error": "if True:\nprint(\"Python is awesome!\")",
+        "message": "You must indent the print statement under the if block."
       },
       {
-        "error": "Your_name = 'John'",
-        "message": "Use lowercase: your_name = 'John'"
+        "error": "if True\n    print(\"Python is awesome!\")",
+        "message": "Missing colon `:` after the if condition."
       },
       {
-        "error": "yourname = 'John'",
-        "message": "Use underscore: your_name = 'John'"
+        "error": "if True:\n        print(\"Python is awesome!\")",
+        "message": "Too much indentation can be confusing. Use exactly 4 spaces."
       }
     ]
   },
   "nextLesson": 3,
-  "xpReward": 30,
-  "skills": ["variables", "naming_conventions", "string_storage"]
+  "xpReward": 25,
+  "skills": ["syntax", "indentation", "if_statement"],
+  "tags": ["syntax", "indentation", "beginner", "if"]
 }

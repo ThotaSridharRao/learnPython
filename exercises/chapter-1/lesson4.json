@@ -1,0 +1,65 @@
+{
+  "id": 4,
+  "chapter": 1,
+  "title": "Writing Your First Python Script",
+  "conceptId": "getting-started/first-script",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Combining What You've Learned",
+    "introduction": "You've learned how to print, write comments, and structure Python code. Now it’s time to combine everything and write your first small script.",
+    "explanation": "Python scripts are just plain text files with `.py` extension. They can contain comments, multiple print statements, and logic. Good scripts are readable, organized, and informative.",
+    "keyPoints": [
+      "Use comments to describe what your code does",
+      "Group related logic with indentation",
+      "Use blank lines to keep your code clean"
+    ],
+    "codeExamples": [
+      {
+        "code": "# This program prints two messages\nprint(\"Python is fun!\")\nprint(\"Let's keep learning!\")",
+        "explanation": "Simple script using comments and multiple print statements"
+      }
+    ],
+    "importantNotes": [
+      "🧠 It's okay to make mistakes — errors are part of learning!",
+      "✅ Run your code often to test small pieces",
+      "💡 Keep scripts short and focused when starting out"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/introduction.html"
+    ]
+  },
+  "task": {
+    "objective": "Create a short Python script using all key elements",
+    "description": "Write a script that includes a comment and prints two lines of text using proper syntax.",
+    "expectedOutput": "Learning Python is fun!\nThis is just the beginning!",
+    "starterCode": "# Describe what your script does\n\nprint(\"Learning Python is fun!\")\nprint(\"This is just the beginning!\")",
+    "hints": [
+      "Start with a comment line using `#`",
+      "Use print() twice with different messages",
+      "Ensure both lines print correctly"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "# Describe what your script does\nprint(\"Learning Python is fun!\")\nprint(\"This is just the beginning!\")"
+    ],
+    "outputMatch": "Learning Python is fun!\nThis is just the beginning!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(Learning Python is fun!)",
+        "message": "You forgot the quotes around your message."
+      },
+      {
+        "error": "Print(\"Learning Python is fun!\")",
+        "message": "Use lowercase `print`, not `Print`."
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 30,
+  "skills": ["print_function", "comments", "script_writing"],
+  "tags": ["print", "comments", "syntax", "script"]
+}
