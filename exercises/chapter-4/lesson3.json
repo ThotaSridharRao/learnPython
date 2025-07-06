@@ -1,0 +1,58 @@
+{
+  "id": 3,
+  "chapter": 4,
+  "title": "Nested if Statements",
+  "conceptId": "conditionals/nested",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Using if Inside Another if",
+    "introduction": "You can place one `if` statement inside another. This is called nesting, and it helps handle more detailed decisions.",
+    "explanation": "When you need to check a second condition only if the first one is true, nest the second `if` block inside the first. Each nested block must be indented further.",
+    "keyPoints": [
+      "Nested conditionals are useful for multi-step logic",
+      "Each inner block is indented more than its parent",
+      "Avoid over-nesting — it makes code harder to read"
+    ],
+    "codeExamples": [
+      {
+        "code": "score = 90\nif score > 50:\n    if score >= 90:\n        print(\"Excellent!\")",
+        "explanation": "The second condition is only checked if the first is true"
+      }
+    ],
+    "importantNotes": [
+      "📌 Each level of nesting increases indentation",
+      "🧠 Only write the inner `if` when truly needed",
+      "✅ Nesting is powerful but should be used wisely"
+    ],
+    "references": [
+      "https://realpython.com/python-conditional-statements/#nested-if-statements"
+    ]
+  },
+  "task": {
+    "objective": "Write a nested if statement to check multiple conditions",
+    "description": "Create a variable `age = 20`. If age is 18 or more, check if it is also 21 or more. Print 'Adult' if 18+, and 'Can drink' if 21+.",
+    "expectedOutput": "Adult\n",
+    "starterCode": "# Use nested if blocks\n",
+    "hints": [
+      "Use one `if` inside another",
+      "Only print 'Can drink' if age is 21 or more",
+      "Ensure indentation is correct"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Adult",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "if age >= 18:\nprint(\"Adult\")\nif age >= 21:\nprint(\"Can drink\")",
+        "message": "The second `if` must be inside the first block"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 35,
+  "skills": ["nested_if", "conditionals", "indentation"],
+  "tags": ["if", "nested", "logic"]
+}

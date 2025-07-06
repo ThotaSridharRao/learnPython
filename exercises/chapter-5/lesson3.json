@@ -1,0 +1,64 @@
+{
+  "id": 3,
+  "chapter": 5,
+  "title": "Breaking and Skipping Loops",
+  "conceptId": "loops/break-continue",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Controlling Loops with break and continue",
+    "introduction": "`break` and `continue` help you control when to stop or skip parts of a loop.",
+    "explanation": "`break` stops the loop completely, even if the condition is still true. `continue` skips the current iteration and moves to the next one.",
+    "keyPoints": [
+      "`break` exits the loop early",
+      "`continue` skips the current step",
+      "You can use them in both `for` and `while` loops"
+    ],
+    "codeExamples": [
+      {
+        "code": "for i in range(5):\n    if i == 3:\n        break\n    print(i)",
+        "explanation": "`break` exits the loop when `i == 3`"
+      },
+      {
+        "code": "for i in range(5):\n    if i == 2:\n        continue\n    print(i)",
+        "explanation": "`continue` skips printing when `i == 2`"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ Use `break` to avoid infinite loops when needed",
+      "🧠 `continue` is useful to skip specific cases"
+    ],
+    "references": [
+      "https://www.w3schools.com/python/ref_keyword_break.asp"
+    ]
+  },
+  "task": {
+    "objective": "Use both `break` and `continue` in a loop",
+    "description": "Print numbers from 0 to 9. Skip number 5 and stop the loop completely when number 8 is reached.",
+    "expectedOutput": "0\n1\n2\n3\n4\n6\n7",
+    "starterCode": "# Use break and continue inside a for loop\n",
+    "hints": [
+      "Use `if i == 5: continue` to skip 5",
+      "Use `if i == 8: break` to stop at 8"
+    ]
+  },
+  "validation": {
+    "outputMatch": "0\n1\n2\n3\n4\n6\n7",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(i) before continue",
+        "message": "Make sure `continue` comes before `print(i)` if you're skipping"
+      },
+      {
+        "error": "print(0 to 9 all)",
+        "message": "You should skip 5 and stop at 8 using `continue` and `break`"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 40,
+  "skills": ["break", "continue", "loop_control"],
+  "tags": ["break", "continue", "loop", "control"]
+}

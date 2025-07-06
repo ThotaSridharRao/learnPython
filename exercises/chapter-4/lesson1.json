@@ -1,0 +1,61 @@
+{
+  "id": 1,
+  "chapter": 4,
+  "title": "Using if Statements",
+  "conceptId": "conditionals/if",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Making Decisions with if",
+    "introduction": "The `if` statement allows Python to make decisions and run certain code only when a condition is true.",
+    "explanation": "Write a condition after `if` followed by a colon. Then indent the code you want to run if that condition is true. If the condition is false, the code is skipped.",
+    "keyPoints": [
+      "Use `if` followed by a condition and a colon `:`",
+      "Indent the block you want to run if the condition is true",
+      "Conditions return a Boolean: `True` or `False`"
+    ],
+    "codeExamples": [
+      {
+        "code": "age = 18\nif age >= 18:\n    print(\"You are an adult.\")",
+        "explanation": "The code inside `if` runs only if the condition is true"
+      }
+    ],
+    "importantNotes": [
+      "❗ Indentation is required after `if`",
+      "✅ Conditions can use comparison operators like `>=`, `==`, etc.",
+      "💡 You can use variables or direct values in conditions"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/controlflow.html#if-statements"
+    ]
+  },
+  "task": {
+    "objective": "Write an if statement that checks a condition",
+    "description": "Create a variable `temperature` with value 30. If it is greater than 25, print 'It's hot today!'.",
+    "expectedOutput": "It's hot today!",
+    "starterCode": "# Check if temperature is above 25\n",
+    "hints": [
+      "Use `if temperature > 25:`",
+      "Print message inside indented block"
+    ]
+  },
+  "validation": {
+    "outputMatch": "It's hot today!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "if temperature > 25\nprint(\"It's hot today!\")",
+        "message": "You forgot the colon at the end of the `if` line."
+      },
+      {
+        "error": "print(\"It's hot today!\")",
+        "message": "Wrap the print statement inside an `if` block."
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 30,
+  "skills": ["if_statement", "conditionals", "comparison"],
+  "tags": ["if", "decision", "boolean"]
+}

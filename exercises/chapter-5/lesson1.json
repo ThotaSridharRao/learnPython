@@ -1,0 +1,62 @@
+{
+  "id": 1,
+  "chapter": 5,
+  "title": "Using for Loops with range()",
+  "conceptId": "loops/for-range",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Repeating Code with for Loops",
+    "introduction": "Loops are used to run the same block of code multiple times. A `for` loop is useful when you know how many times to repeat.",
+    "explanation": "`range()` gives a sequence of numbers. `for` loops go through each number and run the code inside the block.",
+    "keyPoints": [
+      "Use `range(n)` to repeat n times (from 0 to n-1)",
+      "The variable in the loop changes each time",
+      "`for i in range(n):` is a common pattern"
+    ],
+    "codeExamples": [
+      {
+        "code": "for i in range(3):\n    print(\"Hello\")",
+        "explanation": "Prints 'Hello' 3 times"
+      },
+      {
+        "code": "for i in range(5):\n    print(i)",
+        "explanation": "Prints numbers from 0 to 4"
+      }
+    ],
+    "importantNotes": [
+      "💡 `range(n)` goes from 0 to n-1",
+      "📌 Use indentation for loop body",
+      "🧠 Variable name (like `i`) can be anything"
+    ],
+    "references": [
+      "https://realpython.com/python-range/"
+    ]
+  },
+  "task": {
+    "objective": "Write a for loop that prints a countdown",
+    "description": "Use a for loop to print numbers from 5 down to 1, one per line. Then print 'Go!'",
+    "expectedOutput": "5\n4\n3\n2\n1\nGo!",
+    "starterCode": "# Use range() to count backward\n",
+    "hints": [
+      "Use range(start, stop, step)",
+      "Use negative step to go backward",
+      "Print 'Go!' after the loop"
+    ]
+  },
+  "validation": {
+    "outputMatch": "5\n4\n3\n2\n1\nGo!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "range(5)",
+        "message": "This counts forward — try using `range(5, 0, -1)`"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 35,
+  "skills": ["for_loop", "range", "reverse_iteration"],
+  "tags": ["loop", "for", "countdown"]
+}

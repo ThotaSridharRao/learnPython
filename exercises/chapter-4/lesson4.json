@@ -1,0 +1,57 @@
+{
+  "id": 4,
+  "chapter": 4,
+  "title": "Practice: Classifying Age Groups",
+  "conceptId": "conditionals/practice",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Applying Conditionals in Real Problems",
+    "introduction": "Let’s practice everything you’ve learned using if, elif, else, and nested blocks in a real example.",
+    "explanation": "You’ll build a simple program that classifies a person's age into categories like child, teen, adult, or senior. This is a common decision-making task in real apps.",
+    "keyPoints": [
+      "Use if-elif-else to handle multiple age categories",
+      "Use proper indentation for each condition",
+      "Choose clear and non-overlapping conditions"
+    ],
+    "codeExamples": [
+      {
+        "code": "age = 30\nif age < 13:\n    print(\"Child\")\nelif age < 18:\n    print(\"Teen\")\nelif age < 60:\n    print(\"Adult\")\nelse:\n    print(\"Senior\")",
+        "explanation": "Age is categorized into 4 levels"
+      }
+    ],
+    "importantNotes": [
+      "✅ Order matters: check smaller conditions first",
+      "📌 else runs only if none of the earlier conditions match"
+    ],
+    "references": [
+      "https://www.w3schools.com/python/python_conditions.asp"
+    ]
+  },
+  "task": {
+    "objective": "Classify age based on value using if-elif-else",
+    "description": "Create a variable `age = 10`. Print 'Child' if less than 13, 'Teen' if between 13 and 17, 'Adult' if 18 to 59, and 'Senior' if 60 or above.",
+    "expectedOutput": "Child",
+    "starterCode": "# Use if-elif-else to classify age\n",
+    "hints": [
+      "Check smaller ranges first (`< 13`)",
+      "Use elif and else for other conditions",
+      "Print only one result"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Child",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"Child\")",
+        "message": "Your code must use if-elif-else structure, not just print"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 40,
+  "skills": ["if_elif_else", "comparison", "real_world_logic"],
+  "tags": ["practice", "age", "classification"]
+}

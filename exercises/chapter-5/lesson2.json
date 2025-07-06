@@ -1,0 +1,57 @@
+{
+  "id": 2,
+  "chapter": 5,
+  "title": "Using while Loops",
+  "conceptId": "loops/while",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Looping Until a Condition is False",
+    "introduction": "A `while` loop keeps running as long as a condition is true. It's useful when you don’t know how many times you’ll need to repeat.",
+    "explanation": "Unlike `for`, the `while` loop checks a condition before every run. If the condition is still true, it repeats the block. You must update something inside the loop, or it could run forever!",
+    "keyPoints": [
+      "Use `while condition:` to start a loop",
+      "The condition is checked every time",
+      "Be careful to avoid infinite loops"
+    ],
+    "codeExamples": [
+      {
+        "code": "count = 1\nwhile count <= 3:\n    print(count)\n    count += 1",
+        "explanation": "Prints 1, 2, 3 and then exits the loop"
+      }
+    ],
+    "importantNotes": [
+      "❗ Change your variable inside the loop or it won’t stop",
+      "💡 `while True:` creates an infinite loop (needs `break`) if not handled",
+      "🧠 Good for unknown repetitions (e.g., until user exits)"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming"
+    ]
+  },
+  "task": {
+    "objective": "Use a while loop to count up",
+    "description": "Create a variable `num = 1`. Use a while loop to print numbers 1 through 5 (one per line).",
+    "expectedOutput": "1\n2\n3\n4\n5",
+    "starterCode": "# Use while loop to count up from 1 to 5\n",
+    "hints": [
+      "Use `while num <= 5:`",
+      "Update `num` inside the loop using `+=`"
+    ]
+  },
+  "validation": {
+    "outputMatch": "1\n2\n3\n4\n5",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "while num <= 5:\nprint(num)",
+        "message": "Did you forget to increment `num`? You’ll create an infinite loop."
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 35,
+  "skills": ["while_loop", "condition", "increment"],
+  "tags": ["loop", "while", "repetition"]
+}

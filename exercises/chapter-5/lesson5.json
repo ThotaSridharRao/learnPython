@@ -1,0 +1,64 @@
+{
+  "id": 5,
+  "chapter": 5,
+  "title": "Loop Practice and Best Practices",
+  "conceptId": "loops/best-practices",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Choosing the Right Loop and Writing Clean Code",
+    "introduction": "Loops are powerful — but choosing the right type and keeping them clean is key to writing good code.",
+    "explanation": "Use `for` when you know how many times to repeat. Use `while` when you loop until something happens. Avoid unnecessary nesting and infinite loops. Always update loop variables properly.",
+    "keyPoints": [
+      "`for` = known count, `while` = unknown count",
+      "Use `break` for early exits, `continue` for skips",
+      "Keep indentation clean and avoid too much nesting",
+      "Check that your loops always have an exit condition"
+    ],
+    "codeExamples": [
+      {
+        "code": "for i in range(5):\n    print(i)",
+        "explanation": "Use `for` when the number of iterations is known"
+      },
+      {
+        "code": "while True:\n    response = input(\"Type 'exit': \")\n    if response == 'exit':\n        break",
+        "explanation": "Use `while` when waiting for a condition"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Comment your loop logic to improve readability",
+      "💡 Test loops with small values before full runs",
+      "✅ Avoid infinite loops unless intentional (with `break`)"
+    ],
+    "references": [
+      "https://realpython.com/python-for-loop/",
+      "https://www.programiz.com/python-programming/while-loop"
+    ]
+  },
+  "task": {
+    "objective": "Build a program using both for and while loops",
+    "description": "1. Use a `for` loop to print numbers 1–3.\n2. Then use a `while` loop to print numbers 4–6.\nEach number should be on a separate line.",
+    "expectedOutput": "1\n2\n3\n4\n5\n6",
+    "starterCode": "# First use a for loop, then a while loop\n",
+    "hints": [
+      "Use `range(1, 4)` for the for loop",
+      "Initialize `num = 4` and use `while num <= 6`",
+      "Increment `num` inside the while loop"
+    ]
+  },
+  "validation": {
+    "outputMatch": "1\n2\n3\n4\n5\n6",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "only used one loop type",
+        "message": "Make sure to use both `for` and `while` loops as instructed."
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 45,
+  "skills": ["for_loop", "while_loop", "loop_control", "best_practices"],
+  "tags": ["loop", "practice", "combined", "recap"]
+}

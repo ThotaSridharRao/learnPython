@@ -1,0 +1,59 @@
+{
+  "id": 2,
+  "chapter": 4,
+  "title": "if-elif-else Statements",
+  "conceptId": "conditionals/if-elif-else",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Multiple Conditions with if-elif-else",
+    "introduction": "When more than one condition is possible, use `elif` and `else` to build multi-step decisions.",
+    "explanation": "`if` checks the first condition. If it’s false, Python checks `elif` (else if). If none are true, it runs the final `else` block. Only one block will run.",
+    "keyPoints": [
+      "Use `if`, `elif`, and `else` in sequence",
+      "`elif` stands for 'else if'",
+      "`else` runs if all other conditions are false",
+      "Each block must be indented"
+    ],
+    "codeExamples": [
+      {
+        "code": "marks = 85\nif marks >= 90:\n    print(\"A\")\nelif marks >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")",
+        "explanation": "Checks multiple grade conditions"
+      }
+    ],
+    "importantNotes": [
+      "❗ Only one block is executed even if multiple are true",
+      "✅ `else` does not need a condition",
+      "🧠 Order of conditions matters"
+    ],
+    "references": [
+      "https://realpython.com/python-conditional-statements/"
+    ]
+  },
+  "task": {
+    "objective": "Build a program with if, elif, and else blocks",
+    "description": "Create a variable `score` with value 70. Print 'Pass' if the score is 75 or more, 'Just Passed' if 60 or more, else print 'Fail'.",
+    "expectedOutput": "Just Passed",
+    "starterCode": "# Check multiple score levels\n",
+    "hints": [
+      "Use if score >= 75: then elif, then else",
+      "Remember to indent all blocks",
+      "Use correct comparison signs"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Just Passed",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "if score >= 75:\nprint(\"Pass\")\nelif score >= 60:\nprint(\"Just Passed\")",
+        "message": "Did you forget the final else block?"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 35,
+  "skills": ["if", "elif", "else", "control_flow"],
+  "tags": ["if", "elif", "else", "decision-making"]
+}

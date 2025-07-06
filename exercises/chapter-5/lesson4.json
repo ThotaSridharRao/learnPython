@@ -1,0 +1,57 @@
+{
+  "id": 4,
+  "chapter": 5,
+  "title": "Nested Loops and Pattern Printing",
+  "conceptId": "loops/nested-pattern",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Using Loops Inside Loops",
+    "introduction": "A loop inside another loop is called a nested loop. It’s useful for grids, tables, or patterns.",
+    "explanation": "The outer loop runs once, and each time it runs, the inner loop runs completely. This is often used in printing patterns or working with 2D data.",
+    "keyPoints": [
+      "Nested loops are loops inside loops",
+      "Indent the inner loop more than the outer",
+      "Useful for patterns, grids, tables"
+    ],
+    "codeExamples": [
+      {
+        "code": "for i in range(3):\n    for j in range(2):\n        print(i, j)",
+        "explanation": "Prints pair combinations"
+      }
+    ],
+    "importantNotes": [
+      "💡 Be careful with indentation — each loop needs its block",
+      "🧠 Use `print(\"*\", end=\"\")` to print on the same line"
+    ],
+    "references": [
+      "https://www.geeksforgeeks.org/nested-loops-python/"
+    ]
+  },
+  "task": {
+    "objective": "Print a right-angle triangle pattern",
+    "description": "Use a nested loop to print:\n*\n**\n***",
+    "expectedOutput": "*\n**\n***",
+    "starterCode": "# Use nested loops to build the pattern\n",
+    "hints": [
+      "Use outer loop for rows, inner for stars",
+      "Use `print('*', end='')` inside inner loop",
+      "Add `print()` after inner loop to go to the next line"
+    ]
+  },
+  "validation": {
+    "outputMatch": "*\n**\n***",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print('*') inside both loops",
+        "message": "Make sure to use `end=''` to avoid line breaks inside inner loop"
+      }
+    ]
+  },
+  "nextLesson": 5,
+  "xpReward": 45,
+  "skills": ["nested_loop", "pattern_printing", "indentation"],
+  "tags": ["nested", "loops", "patterns"]
+}
