@@ -1,0 +1,61 @@
+{
+  "id": 6,
+  "chapter": 6,
+  "title": "Nested Data Structures",
+  "conceptId": "data/nested",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "9 minutes",
+  "theory": {
+    "concept": "Combining Lists, Dictionaries, and More",
+    "introduction": "You can combine data structures inside each other. This allows for more complex and realistic representations.",
+    "explanation": "Nested data means using a list inside a dictionary, or a dictionary inside another dictionary. You access items using multiple keys or indices.",
+    "keyPoints": [
+      "Dictionaries can hold lists as values",
+      "Lists can contain dictionaries as items",
+      "Access nested items using multiple levels"
+    ],
+    "codeExamples": [
+      {
+        "code": "student = {\n  \"name\": \"Shridhar\",\n  \"scores\": [85, 90, 92]\n}\nprint(student[\"scores\"][1])",
+        "explanation": "Accessing a list inside a dictionary"
+      },
+      {
+        "code": "users = [\n  {\"name\": \"Alice\"},\n  {\"name\": \"Bob\"}\n]\nprint(users[1][\"name\"])",
+        "explanation": "Accessing a dictionary inside a list"
+      }
+    ],
+    "importantNotes": [
+      "💡 Access level by level — one index/key at a time",
+      "✅ Very useful for real-world data like JSON",
+      "🧠 Readability matters more as complexity increases"
+    ],
+    "references": [
+      "https://realpython.com/python-nested-dictionaries/"
+    ]
+  },
+  "task": {
+    "objective": "Create and access nested structures",
+    "description": "Create a dictionary named `course` with two keys: `title` set to `'Python'`, and `topics` set to a list `['Variables', 'Loops']`. Print the second topic.",
+    "expectedOutput": "Loops",
+    "starterCode": "# Create a dictionary with a list inside\n",
+    "hints": [
+      "Use `course['topics'][1]` to access 'Loops'",
+      "Check your syntax for list inside dictionary"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Loops",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "course = [\"title\", \"topics\"]",
+        "message": "You need a dictionary with a list as one of its values."
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 50,
+  "skills": ["nested_structures", "dictionary", "list", "accessing"],
+  "tags": ["nested", "dict", "json", "data"]
+}

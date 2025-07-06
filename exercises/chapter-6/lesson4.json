@@ -1,0 +1,63 @@
+{
+  "id": 4,
+  "chapter": 6,
+  "title": "Understanding Sets",
+  "conceptId": "data/sets",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Unordered Collections of Unique Items",
+    "introduction": "Sets are like lists, but they don’t allow duplicates and have no order. Useful for filtering or removing duplicates.",
+    "explanation": "Create sets with `{}` or `set()`. Items must be immutable. Sets support operations like union, intersection, and difference.",
+    "keyPoints": [
+      "Sets only store unique values",
+      "Use `{}` or `set()` to define",
+      "No indexing — you cannot access items by position",
+      "Use `.add()` to add, `.remove()` to delete"
+    ],
+    "codeExamples": [
+      {
+        "code": "fruits = {\"apple\", \"banana\", \"apple\"}\nprint(fruits)",
+        "explanation": "Duplicates are removed automatically"
+      },
+      {
+        "code": "numbers = set()\nnumbers.add(10)\nprint(numbers)",
+        "explanation": "Adding to an empty set"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Sets are unordered — item positions are not fixed",
+      "🚫 You cannot access items with indexing like `set[0]`",
+      "✅ Sets are great for filtering duplicates from lists"
+    ],
+    "references": [
+      "https://realpython.com/python-sets/"
+    ]
+  },
+  "task": {
+    "objective": "Use a set to remove duplicates and add a new item",
+    "description": "Create a set with duplicate numbers (10, 20, 10). Add the number 30 to the set and print the result.",
+    "expectedOutput": "{10, 20, 30}",
+    "starterCode": "# Use set to store unique numbers\n",
+    "hints": [
+      "Use `{}` to define the set",
+      "Use `.add()` to insert a new item",
+      "Duplicates will be removed automatically"
+    ]
+  },
+  "validation": {
+    "outputMatch": "{10, 20, 30}",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "[10, 20, 10]",
+        "message": "You used a list — use `{}` to define a set."
+      }
+    ]
+  },
+  "nextLesson": 5,
+  "xpReward": 40,
+  "skills": ["set", "add", "unique"],
+  "tags": ["set", "collection", "unique"]
+}

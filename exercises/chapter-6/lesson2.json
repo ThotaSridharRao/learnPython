@@ -1,0 +1,62 @@
+{
+  "id": 2,
+  "chapter": 6,
+  "title": "Understanding Tuples",
+  "conceptId": "data/tuples",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Storing Fixed Sequences with Tuples",
+    "introduction": "Tuples are like lists, but they cannot be changed after creation. Use them when you want data to stay constant.",
+    "explanation": "Tuples use parentheses `()`. They're immutable, meaning you can’t add, remove, or change items once they are created. Useful for coordinates, days of the week, or any fixed values.",
+    "keyPoints": [
+      "Use `()` to create a tuple: `t = (1, 2)`",
+      "Tuples are ordered and indexed",
+      "You cannot modify tuple items",
+      "Use `len()` to check how many items"
+    ],
+    "codeExamples": [
+      {
+        "code": "coordinates = (10, 20)\nprint(coordinates[0])",
+        "explanation": "Accessing a tuple item by index"
+      },
+      {
+        "code": "dimensions = (100, 200)\nprint(len(dimensions))",
+        "explanation": "Using `len()` with a tuple"
+      }
+    ],
+    "importantNotes": [
+      "🚫 You cannot use `.append()` or `.remove()` on tuples",
+      "✅ You can loop through tuples just like lists"
+    ],
+    "references": [
+      "https://realpython.com/python-tuples/"
+    ]
+  },
+  "task": {
+    "objective": "Create and read a tuple",
+    "description": "Create a tuple with three fruits. Print the second one, and then print the number of items in the tuple.",
+    "expectedOutput": "Banana\n3",
+    "starterCode": "# Create a tuple and access its values\n",
+    "hints": [
+      "Use `()` to define the tuple",
+      "Index starts from 0",
+      "Use `len()` to count items"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Banana\n3",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+        "message": "Use parentheses `()` to create a tuple, not square brackets `[]`"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 35,
+  "skills": ["tuple", "indexing", "length"],
+  "tags": ["tuple", "immutable", "sequence"]
+}

@@ -1,0 +1,63 @@
+{
+  "id": 3,
+  "chapter": 6,
+  "title": "Working with Dictionaries",
+  "conceptId": "data/dictionaries",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Storing Data in Key-Value Pairs",
+    "introduction": "Dictionaries store data in key-value pairs, allowing you to quickly look up a value using its key.",
+    "explanation": "Dictionaries use `{}` with pairs like `'name': 'Shridhar'`. You can access values using their keys, add new pairs, and modify existing ones. Keys must be unique and immutable.",
+    "keyPoints": [
+      "Create with `{}` and colon `:` between keys and values",
+      "Access values using `dict['key']`",
+      "Add or update with `dict['newKey'] = value`",
+      "Use `.get()` to safely access values"
+    ],
+    "codeExamples": [
+      {
+        "code": "person = {\"name\": \"Shridhar\", \"age\": 21}\nprint(person[\"name\"])",
+        "explanation": "Accessing value using key"
+      },
+      {
+        "code": "person[\"city\"] = \"Pune\"\nprint(person)",
+        "explanation": "Adding a new key-value pair"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Keys must be unique",
+      "⚠️ Accessing missing keys directly causes an error — use `.get()` instead",
+      "✅ Dictionaries are unordered in Python <3.7"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/datastructures.html#dictionaries"
+    ]
+  },
+  "task": {
+    "objective": "Create and update a dictionary",
+    "description": "Make a dictionary with your name and age. Then add a new key `language` with the value `Python`. Print the whole dictionary.",
+    "expectedOutput": "{'name': 'Shridhar', 'age': 21, 'language': 'Python'}",
+    "starterCode": "# Create a dictionary and add a new key\n",
+    "hints": [
+      "Use `{}` to define dictionary",
+      "Use `dict['key'] = value` to add new items",
+      "Use `print()` to display the final result"
+    ]
+  },
+  "validation": {
+    "outputMatch": "{'name': 'Shridhar', 'age': 21, 'language': 'Python'}",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "['Shridhar', 21]",
+        "message": "You're creating a list, not a dictionary. Use `{}` with key-value pairs."
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 40,
+  "skills": ["dictionary", "key-value", "update", "print"],
+  "tags": ["dict", "mapping", "data_structure"]
+}

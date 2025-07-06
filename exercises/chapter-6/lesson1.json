@@ -1,0 +1,63 @@
+{
+  "id": 1,
+  "chapter": 6,
+  "title": "Working with Lists",
+  "conceptId": "data/lists",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Storing Multiple Values in Lists",
+    "introduction": "Lists are used to store multiple items in one variable. They’re one of Python’s most powerful tools.",
+    "explanation": "Lists can hold numbers, strings, or other lists. They are ordered, changeable, and allow duplicates. Use square brackets `[]` to create a list. Access items using their index (starting from 0).",
+    "keyPoints": [
+      "Create lists with `[]`, like `fruits = [\"apple\", \"banana\"]`",
+      "Use `list[0]` to get the first item",
+      "Use `.append()` to add items",
+      "Use `.remove()` to delete by value"
+    ],
+    "codeExamples": [
+      {
+        "code": "colors = [\"red\", \"blue\", \"green\"]\nprint(colors[1])",
+        "explanation": "Accessing the second item in the list"
+      },
+      {
+        "code": "colors.append(\"yellow\")\nprint(colors)",
+        "explanation": "Adds a new item at the end"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Indexing starts at 0",
+      "📌 Lists are mutable — they can be changed",
+      "🚫 Using an index that doesn’t exist gives an error"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"
+    ]
+  },
+  "task": {
+    "objective": "Create and modify a list using indexing and methods",
+    "description": "Create a list with `\"Python\"`, `\"Java\"`. Print the first item. Then add `\"C++\"` and print the full list.",
+    "expectedOutput": "Python\n['Python', 'Java', 'C++']",
+    "starterCode": "# Create a list with two items and modify it\n",
+    "hints": [
+      "Use `[]` to define the list",
+      "Access item at index 0",
+      "Use `.append()` to add a new item"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Python\n['Python', 'Java', 'C++']",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(list[0])",
+        "message": "Did you create a variable like `languages = [...]`?"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 40,
+  "skills": ["list", "indexing", "append", "print"],
+  "tags": ["list", "sequence", "mutable"]
+}

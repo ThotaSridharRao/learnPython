@@ -1,0 +1,67 @@
+{
+  "id": 5,
+  "chapter": 6,
+  "title": "Choosing the Right Data Structure",
+  "conceptId": "data/choosing-structure",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "When to Use Lists, Tuples, Sets, or Dictionaries",
+    "introduction": "Different data structures solve different problems. Choosing the right one makes your code cleaner, faster, and more readable.",
+    "explanation": "Use lists when you need an ordered, changeable sequence. Use tuples for fixed collections. Use dictionaries to map keys to values. Use sets when uniqueness matters.",
+    "keyPoints": [
+      "📋 Use lists for ordered, editable sequences",
+      "🔐 Use tuples for read-only or fixed data",
+      "🧾 Use dictionaries for key-value mapping",
+      "⚙️ Use sets for uniqueness and fast membership tests"
+    ],
+    "codeExamples": [
+      {
+        "code": "fruits = [\"apple\", \"banana\"]",
+        "explanation": "Use list to hold a group of items"
+      },
+      {
+        "code": "student = {\"name\": \"Shridhar\", \"age\": 20}",
+        "explanation": "Use dictionary to store labeled data"
+      },
+      {
+        "code": "unique_ids = {101, 102, 103}",
+        "explanation": "Use set to store unique IDs"
+      }
+    ],
+    "importantNotes": [
+      "❌ Avoid using lists for lookups (use dict or set instead)",
+      "✅ Know if you need order, mutability, or keys",
+      "🧠 A good structure makes your code easier to debug"
+    ],
+    "references": [
+      "https://realpython.com/python-data-structures/"
+    ]
+  },
+  "task": {
+    "objective": "Pick the correct data structures",
+    "description": "1. Store a fixed pair of coordinates (5, 10) as a tuple\n2. Store unique class roll numbers: 101, 102, 101 in a set\n3. Store a product's name and price in a dictionary\nThen print all three structures.",
+    "expectedOutput": "(5, 10)\n{101, 102}\n{'name': 'Pen', 'price': 10}",
+    "starterCode": "# Create one tuple, one set, and one dictionary\n",
+    "hints": [
+      "Use `()` for tuple, `{}` for set and dict",
+      "Avoid duplicates in sets",
+      "Use labels for keys in the dictionary"
+    ]
+  },
+  "validation": {
+    "outputMatch": "(5, 10)\n{101, 102}\n{'name': 'Pen', 'price': 10}",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "[5, 10]",
+        "message": "You used a list — use a tuple `()` for fixed coordinates."
+      }
+    ]
+  },
+  "nextLesson": 6,
+  "xpReward": 45,
+  "skills": ["list", "tuple", "dict", "set", "design_choice"],
+  "tags": ["data_structure", "comparison", "design"]
+}
