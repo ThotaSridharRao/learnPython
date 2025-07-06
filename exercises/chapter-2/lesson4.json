@@ -1,0 +1,78 @@
+{
+  "id": 4,
+  "chapter": 2,
+  "title": "Booleans and None",
+  "conceptId": "variables/booleans-none",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "True, False, and None in Python",
+    "introduction": "Booleans are special values in Python that represent true or false logic. `None` is used when a variable has no value yet.",
+    "explanation": "Boolean values are either `True` or `False`. They’re often used in condition checks, comparisons, and control flow. `None` is a unique Python object that means 'nothing here'. It’s often used as a placeholder or default value.",
+    "keyPoints": [
+      "`True` and `False` are Boolean values",
+      "`None` means 'no value' or 'not assigned yet'",
+      "Use `type()` to check the type of a value",
+      "Booleans often come from comparisons like `a > b`"
+    ],
+    "codeExamples": [
+      {
+        "code": "is_active = True\nprint(type(is_active))",
+        "explanation": "Stores a Boolean and checks its type"
+      },
+      {
+        "code": "data = None\nprint(data)",
+        "explanation": "Assigns `None` and prints it"
+      },
+      {
+        "code": "print(5 > 3)",
+        "explanation": "Comparisons return a Boolean value"
+      }
+    ],
+    "importantNotes": [
+      "🧠 `True` and `False` must be capitalized",
+      "🚫 `none`, `true`, or `false` are invalid — Python is case-sensitive",
+      "📌 `None` is often used when a variable is intentionally empty"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/constants.html"
+    ]
+  },
+  "task": {
+    "objective": "Create variables using Boolean and None values",
+    "description": "Create a variable `is_student` and assign it `True`. Create another variable `result` and assign it `None`. Print both values.",
+    "expectedOutput": "True\nNone",
+    "starterCode": "# Assign True to is_student and None to result\n# Then print both variables\n",
+    "hints": [
+      "Remember: `True` and `None` must be capitalized",
+      "Print each variable on a new line",
+      "Assign with `=` and use `print()`"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "is_student = True\nresult = None\nprint(is_student)\nprint(result)"
+    ],
+    "outputMatch": "True\nNone",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "is_student = true",
+        "message": "`true` is incorrect — use capitalized `True`"
+      },
+      {
+        "error": "result = none",
+        "message": "`none` is incorrect — it must be `None` with capital N"
+      },
+      {
+        "error": "print(is_student, result)",
+        "message": "Print each variable on a new line using two `print()` statements"
+      }
+    ]
+  },
+  "nextLesson": 5,
+  "xpReward": 30,
+  "skills": ["booleans", "none", "assignment", "print"],
+  "tags": ["booleans", "true-false", "none", "types"]
+}

@@ -1,0 +1,67 @@
+{
+  "id": 2,
+  "chapter": 3,
+  "title": "Comparison Operators",
+  "conceptId": "operators/comparison",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Comparing Values in Python",
+    "introduction": "Comparison operators check relationships between values and return a Boolean result — either `True` or `False`.",
+    "explanation": "Python supports operators like `==` (equal), `!=` (not equal), `>`, `<`, `>=`, and `<=` to compare values. These are useful in conditionals and logic checks.",
+    "keyPoints": [
+      "`==` means equal",
+      "`!=` means not equal",
+      "`>` and `<` check greater/less than",
+      "`>=` and `<=` include equality in comparison",
+      "Comparisons return `True` or `False`"
+    ],
+    "codeExamples": [
+      {
+        "code": "a = 10\nb = 5\nprint(a > b)",
+        "explanation": "`a > b` returns True"
+      },
+      {
+        "code": "print(3 == 3)",
+        "explanation": "Checks equality"
+      },
+      {
+        "code": "print(4 != 5)",
+        "explanation": "Checks inequality"
+      }
+    ],
+    "importantNotes": [
+      "❌ Don't confuse `=` (assignment) with `==` (equality)",
+      "📌 Comparisons return Booleans"
+    ],
+    "references": [
+      "https://docs.python.org/3/reference/expressions.html#comparisons"
+    ]
+  },
+  "task": {
+    "objective": "Use comparison operators and print the results",
+    "description": "Compare two numbers using equality and inequality operators. Print whether they are equal, not equal, and if one is greater.",
+    "expectedOutput": "Equal: False\nNot Equal: True\nGreater: True",
+    "starterCode": "# Try different comparisons\n# Use print() for each check\n",
+    "hints": [
+      "Use ==, !=, and >",
+      "Assign sample values to two variables",
+      "Print each result with a label"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Equal: False\nNot Equal: True\nGreater: True",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "a == b = True",
+        "message": "You cannot assign to a comparison — use `==` inside print()"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 30,
+  "skills": ["comparison", "boolean", "expressions"],
+  "tags": ["comparison", "boolean", "operators"]
+}

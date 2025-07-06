@@ -1,0 +1,74 @@
+{
+  "id": 3,
+  "chapter": 2,
+  "title": "Strings and String Methods",
+  "conceptId": "variables/strings",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Working with Text in Python",
+    "introduction": "Strings are used to store text data like names, messages, or any sequence of characters.",
+    "explanation": "You can create a string by wrapping characters inside single (`'`) or double (`\"`) quotes. Python provides useful methods to manipulate strings like converting to lowercase, uppercase, or checking length.",
+    "keyPoints": [
+      "Strings are enclosed in quotes: `'text'` or `\"text\"`",
+      "Use `+` to concatenate (join) strings",
+      "Use `len()` to get the number of characters",
+      "Use `.lower()` and `.upper()` to change case"
+    ],
+    "codeExamples": [
+      {
+        "code": "name = \"Shridhar\"\nprint(name.upper())",
+        "explanation": "Converts the string to all uppercase"
+      },
+      {
+        "code": "greeting = \"Hello\"\nname = \"World\"\nprint(greeting + \" \" + name)",
+        "explanation": "Concatenates strings with a space"
+      },
+      {
+        "code": "message = \"Welcome\"\nprint(len(message))",
+        "explanation": "Shows the number of characters in the string"
+      }
+    ],
+    "importantNotes": [
+      "📏 `len()` counts every character including spaces",
+      "🧪 String methods return new strings — they don’t change the original",
+      "💡 Concatenation works only between strings"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/stdtypes.html#string-methods"
+    ]
+  },
+  "task": {
+    "objective": "Use string methods to manipulate and print a message",
+    "description": "Create a string variable with your name. Print the name in uppercase and show how many characters it has.",
+    "expectedOutput": "SHRIDHAR\n8",
+    "starterCode": "# Store your name in a variable\n# Print it in uppercase and show its length\n",
+    "hints": [
+      "Use `.upper()` to convert to uppercase",
+      "Use `len()` to count characters",
+      "Print both results on separate lines"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "name = \"Shridhar\"\nprint(name.upper())\nprint(len(name))"
+    ],
+    "outputMatch": "SHRIDHAR\n8",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(len(\"SHRIDHAR\"))",
+        "message": "You should calculate the length of the original variable"
+      },
+      {
+        "error": "print(name.upper, len(name))",
+        "message": "You must call `.upper()` as a function with parentheses"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 30,
+  "skills": ["strings", "len", "upper", "variables"],
+  "tags": ["strings", "string-methods", "uppercase", "length"]
+}

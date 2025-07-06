@@ -1,0 +1,68 @@
+{
+  "id": 1,
+  "chapter": 3,
+  "title": "Arithmetic Operators",
+  "conceptId": "operators/arithmetic",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Performing Math with Python",
+    "introduction": "Python supports all basic math operations like addition, subtraction, multiplication, division, and more.",
+    "explanation": "You can use symbols like `+`, `-`, `*`, `/`, `**` (power), and `%` (modulus) to perform math. You can use these in expressions and assign the result to variables.",
+    "keyPoints": [
+      "`+` adds numbers",
+      "`-` subtracts",
+      "`*` multiplies",
+      "`/` divides (always returns a float)",
+      "`%` returns the remainder",
+      "`**` is used for powers (exponents)"
+    ],
+    "codeExamples": [
+      {
+        "code": "a = 5\nb = 2\nprint(a + b)",
+        "explanation": "Addition"
+      },
+      {
+        "code": "print(10 % 3)",
+        "explanation": "Modulus returns remainder"
+      },
+      {
+        "code": "print(2 ** 3)",
+        "explanation": "2 raised to the power of 3"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ Use parentheses `()` to control the order of operations",
+      "🧠 Division `/` always returns float (e.g. `4 / 2 = 2.0`)"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/operator.html"
+    ]
+  },
+  "task": {
+    "objective": "Use basic arithmetic operations in Python",
+    "description": "Create two variables and calculate their sum, product, and remainder. Print all results.",
+    "expectedOutput": "Sum: 15\nProduct: 50\nRemainder: 0",
+    "starterCode": "# Use any two numbers\n# Show their sum, product, and remainder\n",
+    "hints": [
+      "Use + for sum, * for multiplication, % for remainder",
+      "Store results in variables or print directly",
+      "Use clear labels in output"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Sum: 15\nProduct: 50\nRemainder: 0",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(10 + 5 + 50 + 0)",
+        "message": "You should print each result on a separate line with labels"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 30,
+  "skills": ["addition", "multiplication", "modulus", "expressions"],
+  "tags": ["math", "operators", "arithmetic"]
+}

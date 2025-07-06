@@ -1,0 +1,70 @@
+{
+  "id": 2,
+  "chapter": 2,
+  "title": "Numbers: Integers and Floats",
+  "conceptId": "variables/numbers",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Working with Numbers in Python",
+    "introduction": "Numbers are the foundation of programming. Python supports both whole numbers (integers) and decimal numbers (floats).",
+    "explanation": "Integers (`int`) are whole numbers like 3, -10, 0. Floats (`float`) are numbers with decimals like 3.14 or -0.5. You can assign them to variables and perform mathematical operations.",
+    "keyPoints": [
+      "Use `=` to assign a number to a variable",
+      "Integers are written without a decimal (e.g., `5`)",
+      "Floats include a decimal point (e.g., `3.14`)",
+      "You can add, subtract, multiply, and divide numbers"
+    ],
+    "codeExamples": [
+      {
+        "code": "age = 21\npi = 3.14\nprint(age)\nprint(pi)",
+        "explanation": "Assign and print an integer and a float"
+      },
+      {
+        "code": "a = 10\nb = 2.5\nprint(a + b)",
+        "explanation": "You can perform arithmetic with both types"
+      }
+    ],
+    "importantNotes": [
+      "🔢 Use `type()` to check a value’s data type",
+      "🧮 Mixing int and float gives a float result",
+      "💡 Python handles large numbers automatically"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/functions.html#type"
+    ]
+  },
+  "task": {
+    "objective": "Store numbers in variables and perform addition",
+    "description": "Create two variables: one integer and one float. Add them and print the result.",
+    "expectedOutput": "The result is: 12.5",
+    "starterCode": "# Declare one integer and one float\n# Add them and print the result\n",
+    "hints": [
+      "Use `=` to assign values",
+      "One variable should be a whole number, the other a decimal",
+      "Use `print()` to show the final result"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "a = 10\nb = 2.5\nprint(\"The result is:\", a + b)"
+    ],
+    "outputMatch": "The result is: 12.5",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"The result is: \" + a + b)",
+        "message": "You cannot add strings and numbers directly — use commas or convert with `str()`"
+      },
+      {
+        "error": "a = 10.5\nb = 2.0\nprint(\"The result is:\", a + b)",
+        "message": "Try using one integer and one float as instructed"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 30,
+  "skills": ["numbers", "variables", "addition", "print_function"],
+  "tags": ["int", "float", "math", "variables"]
+}

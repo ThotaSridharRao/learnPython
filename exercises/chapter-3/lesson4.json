@@ -1,0 +1,71 @@
+{
+  "id": 4,
+  "chapter": 3,
+  "title": "String Operations and Formatting",
+  "conceptId": "operators/string-formatting",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Working with and Formatting Strings",
+    "introduction": "You can join, repeat, and format strings in Python using operators and methods.",
+    "explanation": "Use `+` to concatenate, `*` to repeat, and `f-strings` or `.format()` to inject variables into text. String formatting improves readability and customization of printed output.",
+    "keyPoints": [
+      "`+` joins (concatenates) strings",
+      "`*` repeats a string multiple times",
+      "Use `f\"...\"` to embed variables inside strings",
+      "Avoid mixing strings and numbers directly — convert types or use formatting"
+    ],
+    "codeExamples": [
+      {
+        "code": "greeting = \"Hi\" + \" there\"\nprint(greeting)",
+        "explanation": "Joins two strings"
+      },
+      {
+        "code": "print(\"*\" * 10)",
+        "explanation": "Repeats the `*` symbol 10 times"
+      },
+      {
+        "code": "name = \"Shridhar\"\nprint(f\"Hello, {name}!\")",
+        "explanation": "Uses an f-string to insert a variable"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Always wrap text in quotes when joining strings",
+      "⚠️ Use `str()` if you need to join a number with a string",
+      "💡 F-strings are recommended for clarity and modern syntax"
+    ],
+    "references": [
+      "https://realpython.com/python-f-strings/"
+    ]
+  },
+  "task": {
+    "objective": "Use string concatenation, repetition, and f-strings",
+    "description": "Create a string with your name. Use it in an f-string, then print a line of dashes below it using repetition.",
+    "expectedOutput": "Hello, Shridhar!\n--------------",
+    "starterCode": "# Create a variable with your name\n# Use f-string to greet\n# Print a line of 14 dashes below\n",
+    "hints": [
+      "Use `*` to repeat a dash character",
+      "Use f\"Hello, {name}!\" to format the greeting",
+      "Count characters to match the exact output"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Hello, Shridhar!\n--------------",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"Hello, \" + name)",
+        "message": "Try using f-strings for formatting"
+      },
+      {
+        "error": "print(\"-\" * 13)",
+        "message": "The line should have exactly 14 dashes"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 35,
+  "skills": ["strings", "formatting", "concatenation", "repetition"],
+  "tags": ["strings", "formatting", "f-strings", "operators"]
+}

@@ -1,0 +1,67 @@
+{
+  "id": 3,
+  "chapter": 3,
+  "title": "Logical Operators",
+  "conceptId": "operators/logical",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Using Logic in Python",
+    "introduction": "Logical operators allow you to combine multiple conditions to form complex decisions.",
+    "explanation": "Python provides `and`, `or`, and `not` to combine or reverse boolean expressions. These are essential for conditionals and decision making in code.",
+    "keyPoints": [
+      "`and` is True only if both conditions are True",
+      "`or` is True if at least one condition is True",
+      "`not` reverses a condition’s truth value",
+      "You can combine multiple comparisons using logic"
+    ],
+    "codeExamples": [
+      {
+        "code": "a = 10\nb = 5\nprint(a > 5 and b < 10)",
+        "explanation": "`and` combines two comparisons"
+      },
+      {
+        "code": "print(5 > 10 or 3 < 5)",
+        "explanation": "`or` returns True if any one condition is True"
+      },
+      {
+        "code": "print(not True)",
+        "explanation": "`not` reverses the Boolean value"
+      }
+    ],
+    "importantNotes": [
+      "💡 Logical expressions return Boolean results",
+      "❗ Use parentheses `()` for clarity when combining multiple conditions",
+      "🧠 `not` only applies to the expression immediately after it"
+    ],
+    "references": [
+      "https://docs.python.org/3/reference/expressions.html#boolean-operations"
+    ]
+  },
+  "task": {
+    "objective": "Use all three logical operators in a program",
+    "description": "Write three print statements that demonstrate the use of `and`, `or`, and `not`. Show the results clearly.",
+    "expectedOutput": "True\nTrue\nFalse",
+    "starterCode": "# Use and, or, not in print statements\n# Make sure the output matches the expected results\n",
+    "hints": [
+      "Start with simple comparisons",
+      "Use expressions like (5 > 3 and 2 < 4)",
+      "Apply `not` to a True or False expression"
+    ]
+  },
+  "validation": {
+    "outputMatch": "True\nTrue\nFalse",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(5 > 3 & 2 < 4)",
+        "message": "Use `and`, not `&`, for logical operations in Python"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 30,
+  "skills": ["logic", "boolean", "and", "or", "not"],
+  "tags": ["logic", "conditional", "boolean", "operators"]
+}

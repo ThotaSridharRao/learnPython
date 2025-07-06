@@ -1,0 +1,74 @@
+{
+  "id": 5,
+  "chapter": 2,
+  "title": "Type Conversion in Python",
+  "conceptId": "variables/type-conversion",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Changing Data Types in Python",
+    "introduction": "Sometimes you need to convert one data type into another — like turning a number into a string, or a string into an integer.",
+    "explanation": "Python provides built-in functions for type conversion. Use `int()` to convert to integers, `float()` to convert to floating-point numbers, and `str()` to convert values to strings. Be careful: not all conversions are safe (e.g., converting text that isn’t a number).",
+    "keyPoints": [
+      "Use `str()` to turn numbers into text",
+      "Use `int()` and `float()` to convert strings that look like numbers",
+      "You can’t convert words like 'hello' to an int",
+      "Type conversion helps fix type mismatch errors"
+    ],
+    "codeExamples": [
+      {
+        "code": "age = 20\nprint(\"Age: \" + str(age))",
+        "explanation": "Converts a number to a string for concatenation"
+      },
+      {
+        "code": "price = \"19.99\"\nprice = float(price)\nprint(price)",
+        "explanation": "Converts a numeric string into a float"
+      },
+      {
+        "code": "value = \"abc\"\n# int(value) would cause an error!",
+        "explanation": "You cannot convert non-numeric strings into numbers"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ You must convert types before combining strings with numbers",
+      "📌 `str()`, `int()`, and `float()` are common and safe (when used correctly)",
+      "🚫 `int(\"abc\")` will throw a `ValueError`"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/functions.html#type-conversion-functions"
+    ]
+  },
+  "task": {
+    "objective": "Convert a number to a string and print a message",
+    "description": "Store your age as a number in a variable. Use `str()` to include it in a sentence and print the full message.",
+    "expectedOutput": "I am 21 years old.",
+    "starterCode": "# Store your age in a variable and convert it to string\n# Use print() to display the sentence\n",
+    "hints": [
+      "Use `str()` to convert the number",
+      "Use `+` to join strings",
+      "Make sure to use quotes for text"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "age = 21\nprint(\"I am \" + str(age) + \" years old.\")"
+    ],
+    "outputMatch": "I am 21 years old.",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"I am \" + age + \" years old.\")",
+        "message": "You must use `str(age)` to convert the number to text"
+      },
+      {
+        "error": "print(\"I am 21 years old.\")",
+        "message": "Please build the sentence using variables and type conversion"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 30,
+  "skills": ["type_conversion", "str", "int", "float"],
+  "tags": ["conversion", "casting", "types", "strings"]
+}

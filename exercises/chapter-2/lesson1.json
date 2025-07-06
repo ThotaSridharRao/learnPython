@@ -1,0 +1,68 @@
+{
+  "id": 1,
+  "chapter": 2,
+  "title": "Variables and Assignment",
+  "conceptId": "variables/assignment",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Understanding Variables in Python",
+    "introduction": "Variables are like containers that hold data. You use them to store values and use them later in your code.",
+    "explanation": "In Python, you don't need to declare the type of a variable. You just assign a value using the equals sign `=`. Once assigned, you can use the variable name to refer to the value stored inside it.",
+    "keyPoints": [
+      "Variables are created when you assign a value using `=`",
+      "Variable names must start with a letter or underscore",
+      "Python is dynamically typed — no need to declare types",
+      "Variables can hold numbers, text, or any data type"
+    ],
+    "codeExamples": [
+      {
+        "code": "name = \"Shridhar\"\nprint(name)",
+        "explanation": "This creates a variable called `name` and prints its value"
+      },
+      {
+        "code": "x = 10\ny = 5\nprint(x + y)",
+        "explanation": "You can store numbers in variables and use them in expressions"
+      }
+    ],
+    "importantNotes": [
+      "💡 Variable names are case-sensitive (`name` ≠ `Name`)",
+      "❌ You can't use spaces or symbols in variable names",
+      "✅ Use descriptive names like `age`, `score`, not `x1`"
+    ]
+  },
+  "task": {
+    "objective": "Create a variable and print its value",
+    "description": "Declare a variable named `your_name` and store your name in it. Then print it using the print function.",
+    "expectedOutput": "My name is Shridhar!",
+    "starterCode": "# Store your name in a variable called your_name\n# Then print it\n",
+    "hints": [
+      "Use `=` to assign a value to the variable",
+      "Wrap your name in quotes (it’s a string)",
+      "Use `print()` to display the message"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "your_name = \"Shridhar\"\nprint(\"My name is \" + your_name + \"!\")",
+      "your_name = 'Shridhar'\nprint(\"My name is \" + your_name + \"!\")"
+    ],
+    "outputMatch": "My name is Shridhar!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "your_name = Shridhar",
+        "message": "Strings must be in quotes — like 'Shridhar'"
+      },
+      {
+        "error": "print(yourname)",
+        "message": "Check the variable name: it should be `your_name`"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 30,
+  "skills": ["variables", "assignment", "string_concatenation"],
+  "tags": ["variables", "assignment", "print", "strings"]
+}
