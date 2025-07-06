@@ -1,0 +1,79 @@
+{
+  "id": 3,
+  "chapter": 1,
+  "title": "Numbers & Math",
+  "difficulty": "beginner",
+  "estimatedTime": "10 minutes",
+  "theory": {
+    "concept": "Working with Numbers in Python",
+    "introduction": "Python isn't just for text - it's also a powerful calculator! You can work with numbers, perform math operations, and store numerical results in variables.",
+    "explanation": "Python can handle different types of numbers: integers (whole numbers like 5, -3, 100) and floats (decimal numbers like 3.14, -2.5). You can perform mathematical operations just like on a calculator.",
+    "keyPoints": [
+      "Integers: whole numbers (5, -10, 0)",
+      "Floats: decimal numbers (3.14, -2.5, 0.0)",
+      "Basic math operators: + - * / ** %",
+      "Numbers don't need quotes (unlike text)",
+      "Python follows math order of operations"
+    ],
+    "codeExamples": [
+      {
+        "code": "age = 25\nprint(age)",
+        "explanation": "Store a number in a variable (no quotes needed)"
+      },
+      {
+        "code": "result = 10 + 5\nprint(result)",
+        "explanation": "Perform addition and store the result"
+      },
+      {
+        "code": "price = 19.99\nquantity = 3\ntotal = price * quantity\nprint(total)",
+        "explanation": "Calculate total cost using multiplication"
+      },
+      {
+        "code": "print(2 ** 3)",
+        "explanation": "** means 'to the power of' (2 to the power of 3 = 8)"
+      }
+    ],
+    "importantNotes": [
+      "🔢 Numbers don't need quotes: age = 25 (not age = '25')",
+      "➕ Math operators: + (add), - (subtract), * (multiply), / (divide)",
+      "🚀 ** means 'to the power of': 2 ** 3 = 8",
+      "📊 Python follows order of operations (PEMDAS)"
+    ]
+  },
+  "task": {
+    "objective": "Create two number variables and print their sum",
+    "description": "Practice working with numbers by creating variables for two numbers and calculating their sum. This teaches you basic arithmetic operations in Python.",
+    "expectedOutput": "15",
+    "starterCode": "# Create two number variables\n# first_number = 7\n# second_number = 8\n# Calculate and print their sum\n",
+    "hints": [
+      "Create first_number = 7 (no quotes)",
+      "Create second_number = 8 (no quotes)",
+      "Calculate: result = first_number + second_number",
+      "Print the result: print(result)"
+    ]
+  },
+  "validation": {
+    "pattern": "first_number\\s*=\\s*7\\s*\\n\\s*second_number\\s*=\\s*8\\s*\\n.*print.*15",
+    "outputMatch": "15",
+    "checkVariableUsage": true,
+    "requiredVariables": ["first_number", "second_number"],
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "first_number = '7'",
+        "message": "Don't put quotes around numbers. Use: first_number = 7"
+      },
+      {
+        "error": "print(first_number second_number)",
+        "message": "Use + to add numbers: print(first_number + second_number)"
+      },
+      {
+        "error": "result = first_number - second_number",
+        "message": "Use + for addition, not -"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 30,
+  "skills": ["integers", "arithmetic", "math_operations"]
+}

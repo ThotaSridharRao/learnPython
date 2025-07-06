@@ -1,0 +1,331 @@
+{
+  "course": {
+    "title": "Python: From Noob to Pro",
+    "version": "1.0",
+    "totalChapters": 5,
+    "totalLessons": 50,
+    "estimatedDuration": "20 hours"
+  },
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Python Basics",
+      "description": "Learn the fundamentals of Python programming",
+      "difficulty": "beginner",
+      "estimatedTime": "3 hours",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Hello World",
+          "file": "chapter1/lesson1.json",
+          "concepts": ["print_function", "strings", "basic_syntax"]
+        },
+        {
+          "id": 2,
+          "title": "Variables & Text",
+          "file": "chapter1/lesson2.json",
+          "concepts": ["variables", "naming_conventions", "string_storage"]
+        },
+        {
+          "id": 3,
+          "title": "Numbers & Math",
+          "file": "chapter1/lesson3.json",
+          "concepts": ["integers", "floats", "arithmetic_operations"]
+        },
+        {
+          "id": 4,
+          "title": "Getting User Input",
+          "file": "chapter1/lesson4.json",
+          "concepts": ["input_function", "user_interaction"]
+        },
+        {
+          "id": 5,
+          "title": "String Formatting",
+          "file": "chapter1/lesson5.json",
+          "concepts": ["f_strings", "string_concatenation"]
+        },
+        {
+          "id": 6,
+          "title": "Comments & Documentation",
+          "file": "chapter1/lesson6.json",
+          "concepts": ["comments", "code_documentation"]
+        },
+        {
+          "id": 7,
+          "title": "Basic Debugging",
+          "file": "chapter1/lesson7.json",
+          "concepts": ["error_handling", "debugging"]
+        },
+        {
+          "id": 8,
+          "title": "Chapter 1 Project",
+          "file": "chapter1/lesson8.json",
+          "concepts": ["project", "integration"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Control Flow",
+      "description": "Learn to control program flow with conditions and loops",
+      "difficulty": "beginner",
+      "estimatedTime": "4 hours",
+      "lessons": [
+        {
+          "id": 9,
+          "title": "Boolean Values",
+          "file": "chapter2/lesson1.json",
+          "concepts": ["boolean", "true_false"]
+        },
+        {
+          "id": 10,
+          "title": "If Statements",
+          "file": "chapter2/lesson2.json",
+          "concepts": ["if_statements", "conditions"]
+        },
+        {
+          "id": 11,
+          "title": "Else & Elif",
+          "file": "chapter2/lesson3.json",
+          "concepts": ["else", "elif", "multiple_conditions"]
+        },
+        {
+          "id": 12,
+          "title": "Comparison Operators",
+          "file": "chapter2/lesson4.json",
+          "concepts": ["comparison", "operators"]
+        },
+        {
+          "id": 13,
+          "title": "Logical Operators",
+          "file": "chapter2/lesson5.json",
+          "concepts": ["and", "or", "not"]
+        },
+        {
+          "id": 14,
+          "title": "While Loops",
+          "file": "chapter2/lesson6.json",
+          "concepts": ["while_loops", "iteration"]
+        },
+        {
+          "id": 15,
+          "title": "For Loops",
+          "file": "chapter2/lesson7.json",
+          "concepts": ["for_loops", "range"]
+        },
+        {
+          "id": 16,
+          "title": "Chapter 2 Project",
+          "file": "chapter2/lesson8.json",
+          "concepts": ["project", "control_flow"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Data Structures",
+      "description": "Work with lists, dictionaries, and other data structures",
+      "difficulty": "intermediate",
+      "estimatedTime": "5 hours",
+      "lessons": [
+        {
+          "id": 17,
+          "title": "Lists Basics",
+          "file": "chapter3/lesson1.json",
+          "concepts": ["lists", "indexing"]
+        },
+        {
+          "id": 18,
+          "title": "List Methods",
+          "file": "chapter3/lesson2.json",
+          "concepts": ["append", "remove", "list_methods"]
+        },
+        {
+          "id": 19,
+          "title": "Dictionaries",
+          "file": "chapter3/lesson3.json",
+          "concepts": ["dictionaries", "key_value"]
+        },
+        {
+          "id": 20,
+          "title": "Tuples",
+          "file": "chapter3/lesson4.json",
+          "concepts": ["tuples", "immutable"]
+        },
+        {
+          "id": 21,
+          "title": "Sets",
+          "file": "chapter3/lesson5.json",
+          "concepts": ["sets", "unique_values"]
+        },
+        {
+          "id": 22,
+          "title": "List Comprehensions",
+          "file": "chapter3/lesson6.json",
+          "concepts": ["list_comprehensions", "advanced"]
+        },
+        {
+          "id": 23,
+          "title": "Nested Data Structures",
+          "file": "chapter3/lesson7.json",
+          "concepts": ["nested_structures", "complex_data"]
+        },
+        {
+          "id": 24,
+          "title": "Chapter 3 Project",
+          "file": "chapter3/lesson8.json",
+          "concepts": ["project", "data_structures"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Functions & Modules",
+      "description": "Create reusable code with functions and modules",
+      "difficulty": "intermediate",
+      "estimatedTime": "4 hours",
+      "lessons": [
+        {
+          "id": 25,
+          "title": "Function Basics",
+          "file": "chapter4/lesson1.json",
+          "concepts": ["functions", "def"]
+        },
+        {
+          "id": 26,
+          "title": "Parameters & Arguments",
+          "file": "chapter4/lesson2.json",
+          "concepts": ["parameters", "arguments"]
+        },
+        {
+          "id": 27,
+          "title": "Return Values",
+          "file": "chapter4/lesson3.json",
+          "concepts": ["return", "function_output"]
+        },
+        {
+          "id": 28,
+          "title": "Scope & Local Variables",
+          "file": "chapter4/lesson4.json",
+          "concepts": ["scope", "local_variables"]
+        },
+        {
+          "id": 29,
+          "title": "Lambda Functions",
+          "file": "chapter4/lesson5.json",
+          "concepts": ["lambda", "anonymous_functions"]
+        },
+        {
+          "id": 30,
+          "title": "Modules & Import",
+          "file": "chapter4/lesson6.json",
+          "concepts": ["modules", "import"]
+        },
+        {
+          "id": 31,
+          "title": "Standard Library",
+          "file": "chapter4/lesson7.json",
+          "concepts": ["standard_library", "built_in_modules"]
+        },
+        {
+          "id": 32,
+          "title": "Chapter 4 Project",
+          "file": "chapter4/lesson8.json",
+          "concepts": ["project", "functions"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Advanced Topics",
+      "description": "Object-oriented programming and advanced concepts",
+      "difficulty": "advanced",
+      "estimatedTime": "4 hours",
+      "lessons": [
+        {
+          "id": 33,
+          "title": "Classes & Objects",
+          "file": "chapter5/lesson1.json",
+          "concepts": ["classes", "objects", "oop"]
+        },
+        {
+          "id": 34,
+          "title": "Methods & Attributes",
+          "file": "chapter5/lesson2.json",
+          "concepts": ["methods", "attributes"]
+        },
+        {
+          "id": 35,
+          "title": "Inheritance",
+          "file": "chapter5/lesson3.json",
+          "concepts": ["inheritance", "parent_child"]
+        },
+        {
+          "id": 36,
+          "title": "File Operations",
+          "file": "chapter5/lesson4.json",
+          "concepts": ["file_io", "read_write"]
+        },
+        {
+          "id": 37,
+          "title": "Error Handling",
+          "file": "chapter5/lesson5.json",
+          "concepts": ["try_except", "error_handling"]
+        },
+        {
+          "id": 38,
+          "title": "Regular Expressions",
+          "file": "chapter5/lesson6.json",
+          "concepts": ["regex", "pattern_matching"]
+        },
+        {
+          "id": 39,
+          "title": "Working with APIs",
+          "file": "chapter5/lesson7.json",
+          "concepts": ["apis", "json", "requests"]
+        },
+        {
+          "id": 40,
+          "title": "Final Project",
+          "file": "chapter5/lesson8.json",
+          "concepts": ["final_project", "capstone"]
+        }
+      ]
+    }
+  ],
+  "skillsTree": {
+    "beginner": ["print_function", "variables", "strings", "integers", "basic_syntax"],
+    "intermediate": ["lists", "dictionaries", "functions", "loops", "conditions"],
+    "advanced": ["classes", "inheritance", "file_io", "error_handling", "apis"]
+  },
+  "achievements": [
+    {
+      "id": "first_hello",
+      "title": "Hello World Master",
+      "description": "Completed your first Python program",
+      "icon": "🌟",
+      "xp": 50
+    },
+    {
+      "id": "variable_veteran",
+      "title": "Variable Veteran",
+      "description": "Mastered variables and data storage",
+      "icon": "📦",
+      "xp": 100
+    },
+    {
+      "id": "math_magician",
+      "title": "Math Magician",
+      "description": "Performed mathematical operations",
+      "icon": "🧮",
+      "xp": 100
+    },
+    {
+      "id": "chapter_complete",
+      "title": "Chapter Champion",
+      "description": "Completed an entire chapter",
+      "icon": "🏆",
+      "xp": 500
+    }
+  ]
+}

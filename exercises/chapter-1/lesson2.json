@@ -1,0 +1,74 @@
+{
+  "id": 2,
+  "chapter": 1,
+  "title": "Variables & Text",
+  "difficulty": "beginner",
+  "estimatedTime": "10 minutes",
+  "theory": {
+    "concept": "Storing Information in Variables",
+    "introduction": "Now that you can print text, let's learn how to store information! Variables are like containers that hold data. Think of them as labeled boxes where you can store different types of information.",
+    "explanation": "A variable is a name that refers to a value. Instead of typing the same text multiple times, you can store it in a variable and use it whenever needed. This makes your code more organized and easier to change.",
+    "keyPoints": [
+      "Variables store data that can be used later",
+      "Variable names should be descriptive (like 'name' not 'x')",
+      "Use the = sign to assign values to variables",
+      "Variable names can't start with numbers",
+      "Use lowercase with underscores for multi-word names (my_name)"
+    ],
+    "codeExamples": [
+      {
+        "code": "name = 'Alice'\nprint(name)",
+        "explanation": "Store 'Alice' in a variable called 'name', then print it"
+      },
+      {
+        "code": "message = 'Welcome to Python!'\nprint(message)",
+        "explanation": "Store a message in a variable and display it"
+      },
+      {
+        "code": "first_name = 'John'\nlast_name = 'Doe'\nprint(first_name)\nprint(last_name)",
+        "explanation": "You can have multiple variables and use them separately"
+      }
+    ],
+    "importantNotes": [
+      "📝 Choose meaningful variable names (use 'student_name' not 'sn')",
+      "🚫 Don't start variable names with numbers (age_21 is OK, 21_age is not)",
+      "🐍 Python convention: use lowercase with underscores (user_email)",
+      "💡 Variables can be changed - just assign a new value!"
+    ]
+  },
+  "task": {
+    "objective": "Create a variable called 'your_name' with your name, then print it",
+    "description": "Practice storing text in a variable and displaying it. This teaches you the fundamental concept of variables in programming.",
+    "expectedOutput": "YourActualName",
+    "starterCode": "# Create a variable with your name\n# your_name = 'Put your name here'\n# Then print it\n",
+    "hints": [
+      "Create a variable: your_name = 'YourName'",
+      "Then print it: print(your_name)",
+      "Replace 'YourName' with your actual name",
+      "Don't forget the quotes around your name"
+    ]
+  },
+  "validation": {
+    "pattern": "your_name\\s*=\\s*['\"][^'\"]+['\"]\\s*\\n\\s*print\\s*\\(\\s*your_name\\s*\\)",
+    "checkVariableUsage": true,
+    "requiredVariable": "your_name",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print('your_name')",
+        "message": "Don't put quotes around the variable name. Use: print(your_name)"
+      },
+      {
+        "error": "Your_name = 'John'",
+        "message": "Use lowercase: your_name = 'John'"
+      },
+      {
+        "error": "yourname = 'John'",
+        "message": "Use underscore: your_name = 'John'"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 30,
+  "skills": ["variables", "naming_conventions", "string_storage"]
+}

@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTerminal - Python Learning Platform</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Global Styles */
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a; /* Dark background for terminal feel */
+            color: #00ff00; /* Green text for terminal feel */
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll */
+        }
+
+        /* Main Container Grid Layout */
+        .container {
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 60px 1fr; /* Header row and content row */
+            /* Increased left column width from 450px to 600px */
+            grid-template-columns: 600px 1fr; /* Theory panel column and practice panel column */
+            grid-template-areas:
+                "header header"
+                "theory practice";
+            gap: 2px; /* Small gap between grid areas */
+            background-color: #333; /* Border color for grid areas */
+        }
+
+        /* Header Styles */
+        .header {
+            grid-area: header;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 2px solid #333;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background-color: #004400;
+            padding: 4px 8px;
+            border-radius: 3px;
+            border: 1px solid #00ff00;
+        }
+
+        .progress-bar {
+            width: 150px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #00ff00;
+            width: 2%; /* Initial width, updated by JS */
+            transition: width 0.3s ease;
+        }
+
+        /* Theory Panel Styles */
+        .theory-panel {
+            grid-area: theory;
+            background-color: #1a1a1a;
+            padding: 20px;
+            overflow-y: auto; /* Enable scrolling for content */
+            border-right: 2px solid #333;
+        }
+
+        /* Practice Panel Styles (Code Editor + Output) */
+        .practice-panel {
+            grid-area: practice;
+            background-color: #0a0a0a;
+            display: grid;
+            /* Changed from fixed 250px to auto to ensure navigation buttons are visible */
+            grid-template-rows: auto auto 1fr; /* Task area, Code area, Output area */
+            gap: 2px;
+        }
+
+        .task-panel { /* New style for the task panel */
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-bottom: 2px solid #333;
+        }
+
+        .code-area {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-bottom: 2px solid #333;
+        }
+
+        .output-area {
+            background-color: #0a0a0a;
+            padding: 15px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            color: #00ff00;
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Chapter Information Box */
+        .chapter-info {
+            background-color: #002200;
+            border: 2px solid #004400;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .chapter-title {
+            color: #44ff44;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .chapter-subtitle {
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* Theory Content Styling */
+        .theory-content {
+            color: #cccccc;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .theory-section {
+            margin-bottom: 25px;
+        }
+
+        .theory-section h3 {
+            color: #00ff00;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .code-example {
+            background-color: #000;
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            color: #00ff00;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+        }
+
+        .important-note {
+            background-color: #332200;
+            border: 1px solid #664400;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            color: #ffff99;
+        }
+
+        /* Task Box Styling */
+        .task-box {
+            background-color: #001122;
+            border: 2px solid #003366;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .task-title {
+            color: #66ccff;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .task-objective {
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+
+        .expected-output {
+            background-color: #002200;
+            border: 1px solid #004400;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 3px;
+            color: #44ff44;
+        }
+
+        /* Code Input Area */
+        .code-input {
+            width: 100%;
+            height: 120px; /* Still a fixed height for the textarea itself */
+            background-color: #000;
+            border: 1px solid #333;
+            color: #00ff00;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: none; /* Disable textarea resizing */
+            outline: none; /* Remove outline on focus */
+            border-radius: 3px;
+        }
+
+        .code-input:focus {
+            border-color: #00ff00;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* General Button Styles */
+        .btn {
+            background-color: #003300;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+
+        .btn:disabled {
+            background-color: #1a1a1a;
+            color: #666;
+            border-color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background-color: #004400;
+            border-color: #00ff00;
+        }
+
+        .btn-success {
+            background-color: #006600;
+            border-color: #00ff00;
+        }
+
+        .btn-navigation {
+            background-color: #003366;
+            border-color: #0066cc;
+            color: #66ccff;
+            padding: 10px 16px;
+            font-size: 14px;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-navigation:hover {
+            background-color: #0066cc;
+            color: #000;
+        }
+
+        .btn-navigation:disabled {
+            background-color: #1a1a1a;
+            color: #666;
+            border-color: #666;
+            cursor: not-allowed;
+        }
+
+        /* Output Console Styling */
+        .output-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-header {
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .output-terminal {
+            flex: 1; /* Take remaining vertical space */
+            background-color: #000;
+            border: 1px solid #333;
+            padding: 15px;
+            overflow-y: auto; /* Enable scrolling for output */
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            border-radius: 3px;
+        }
+
+        .output-line {
+            margin-bottom: 5px;
+        }
+
+        /* Output Text Colors */
+        .success-text {
+            color: #44ff44;
+        }
+
+        .error-text {
+            color: #ff4444;
+        }
+
+        .info-text {
+            color: #66ccff;
+        }
+
+        /* Hint Section (initially hidden) */
+        .hint-section {
+            background-color: #1a1a00;
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            display: none; /* Controlled by JS */
+        }
+
+        .hint-title {
+            color: #ffff00;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Navigation Buttons at the bottom of code area */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .nav-info {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding: 10px 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .lesson-info {
+            background-color: #001133;
+            border: 1px solid #003366;
+            padding: 10px 16px;
+            border-radius: 5px;
+            color: #66ccff;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* Floating Hint System */
+        .floating-hint-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .floating-hint-btn {
+            background-color: #664400;
+            color: #ffff00;
+            border: 2px solid #ffff00;
+            padding: 12px 16px;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(255, 255, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .floating-hint-btn:hover {
+            background-color: #ffff00;
+            color: #000;
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 6px 16px rgba(255, 255, 0, 0.4);
+        }
+
+        .floating-hint-panel {
+            position: absolute;
+            top: 60px; /* Position relative to the button */
+            right: 0;
+            width: 350px;
+            max-width: 90vw; /* Responsive width */
+            background-color: #1a1a00;
+            border: 2px solid #ffff00;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+            transform: translateX(100%); /* Initially off-screen */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            max-height: 400px; /* Max height for scrollable content */
+            overflow-y: auto;
+        }
+
+        .floating-hint-panel.show {
+            transform: translateX(0); /* Slide in */
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .floating-hint-panel .hint-title {
+            color: #ffff00;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .floating-hint-panel .hint-content {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .floating-hint-panel ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .floating-hint-panel li {
+            margin-bottom: 8px;
+        }
+
+        .hint-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #ffff00;
+            font-size: 18px;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .hint-close-btn:hover {
+            background-color: #ffff00;
+            color: #000;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-rows: 60px 1fr 1fr; /* Header, theory, practice */
+                grid-template-columns: 1fr; /* Single column layout */
+                grid-template-areas:
+                    "header"
+                    "theory"
+                    "practice";
+            }
+
+            .theory-panel {
+                border-right: none;
+                border-bottom: 2px solid #333; /* Add bottom border for separation */
+            }
+
+            .practice-panel {
+                grid-template-rows: auto auto 1fr; /* Task area, Code area, Output area */
+            }
+
+            .header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            .progress-info {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .floating-hint-container {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-hint-panel {
+                top: auto;
+                bottom: 60px; /* Position above the button */
+                right: 0;
+                width: 90vw; /* Wider on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 20px;
+            }
+
+            .progress-info {
+                font-size: 12px;
+                gap: 10px;
+            }
+
+            .btn, .btn-navigation {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .lesson-info, .btn-navigation {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🐍 PyTerminal - Learn Python</div>
+            <div class="progress-info">
+                <span id="chapterInfo">Chapter 1 of 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span>Level: <span class="level-badge">Beginner</span></span>
+            </div>
+        </div>
+
+        <div class="theory-panel">
+            <div class="section-title">📚 Learning Material</div>
+            <div id="lessonContainer"></div>
+        </div>
+
+        <div class="practice-panel">
+            <!-- New Task Panel added here -->
+            <div class="task-panel" id="taskPanel">
+                <div class="section-title">🎯 Current Task</div>
+                <!-- Task content will be rendered here by JavaScript -->
+            </div>
+
+            <div class="code-area">
+                <div class="section-title">⌨️ Code Editor</div>
+                <textarea class="code-input" id="codeInput" placeholder="# Write your Python code here
+# Try: print('Hello, World!')"></textarea>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="runBtn">▶️ Run Code</button>
+                    <button class="btn" id="clearBtn">🗑️ Clear</button>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="btn btn-navigation" id="prevBtn">⬅️ Previous</button>
+                    <div class="lesson-info" id="lessonInfo">Lesson 1</div>
+                    <button class="btn btn-navigation" id="nextBtn">Next ➡️</button>
+                </div>
+            </div>
+
+            <div class="output-area">
+                <div class="output-container">
+                    <div class="output-header">📟 Output Console</div>
+                    <div class="output-terminal" id="outputTerminal">
+<span class="info-text">Welcome to Python! 🐍
+
+Ready to write your first program?
+Type your code above and click 'Run Code' to see the magic happen!
+
+Status: Waiting for your code...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Hint System -->
+    <div class="floating-hint-container">
+        <button class="floating-hint-btn" id="floatingHintBtn">
+            💡 <span id="hintBtnText">Show Hint</span>
+        </button>
+        <div class="floating-hint-panel" id="floatingHintPanel">
+            <button class="hint-close-btn" id="hintCloseBtn">×</button>
+            <div class="hint-title">💡 Helpful Hint</div>
+            <div class="hint-content" id="hintContent">
+                <p>No hints available for this lesson.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state variables
+        let currentChapter = 1;
+        let currentLesson = 1;
+        let pyodideReady = false;
+        let pyodideInstance = null;
+        let totalChapters = 10; // This should ideally come from exercises.json
+        let maxLessonsPerChapter = {}; // Cache for lesson counts per chapter
+
+        // DOM elements
+        const runBtn = document.getElementById('runBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const floatingHintBtn = document.getElementById('floatingHintBtn');
+        const floatingHintPanel = document.getElementById('floatingHintPanel');
+        const hintCloseBtn = document.getElementById('hintCloseBtn');
+        const hintBtnText = document.getElementById('hintBtnText');
+        const hintContent = document.getElementById('hintContent');
+        const codeInput = document.getElementById('codeInput');
+        const outputTerminal = document.getElementById('outputTerminal');
+        const chapterInfo = document.getElementById('chapterInfo');
+        const lessonInfo = document.getElementById('lessonInfo');
+        const lessonContainer = document.getElementById('lessonContainer'); // Added lessonContainer to DOM elements
+        const taskPanel = document.getElementById('taskPanel'); // Added taskPanel to DOM elements
+
+        /**
+         * Initializes Pyodide, loading the Python environment.
+         * Updates the output terminal with success or error messages.
+         */
+        async function setupPyodide() {
+            try {
+                pyodideInstance = await loadPyodide();
+                pyodideReady = true;
+                console.log("✅ Pyodide is ready");
+                updateOutput("🐍 Python environment loaded and ready!", 'success');
+            } catch (error) {
+                console.error("❌ Failed to load Pyodide:", error);
+                updateOutput("❌ Failed to load Python environment", 'error');
+            }
+        }
+
+        /**
+         * Updates the output terminal with a given message and type.
+         * @param {string} message - The message to display.
+         * @param {'info'|'success'|'error'} type - The type of message to determine styling.
+         */
+        function updateOutput(message, type = 'info') {
+            let className = 'info-text';
+
+            switch(type) {
+                case 'error':
+                    className = 'error-text';
+                    break;
+                case 'success':
+                    className = 'success-text';
+                    break;
+                case 'info':
+                default:
+                    className = 'info-text';
+                    break;
+            }
+
+            // Clear previous content and add new message
+            outputTerminal.innerHTML = `<span class="${className}">${message}</span>`;
+        }
+
+        /**
+         * Executes Python code using Pyodide and captures its output.
+         * @param {string} code - The Python code to execute.
+         * @returns {Promise<{success: boolean, output: string}>} - An object indicating success and the output/error.
+         */
+        async function executePython(code) {
+            if (!pyodideReady) {
+                return { success: false, output: "⏳ Pyodide is still loading... Please wait." };
+            }
+
+            try {
+                // Temporarily redirect stdout to a StringIO object in Python
+                await pyodideInstance.runPythonAsync(`
+import sys
+from io import StringIO
+_captured_output = StringIO()
+_old_stdout = sys.stdout
+sys.stdout = _captured_output
+`);
+
+                // Run the user's code
+                await pyodideInstance.runPythonAsync(code);
+
+                // Get the captured output and restore stdout
+                const output = await pyodideInstance.runPythonAsync(`
+captured = _captured_output.getvalue()
+sys.stdout = _old_stdout # Restore original stdout
+captured
+`);
+
+                return {
+                    success: true,
+                    output: output || "✔ Code ran successfully (no output)"
+                };
+            } catch (err) {
+                // Ensure stdout is restored even if an error occurs during code execution
+                try {
+                    await pyodideInstance.runPythonAsync(`
+sys.stdout = _old_stdout # Restore original stdout
+`);
+                } catch (restoreErr) {
+                    console.warn("Could not restore stdout after error:", restoreErr);
+                }
+                return { success: false, output: err.toString() };
+            }
+        }
+
+        /**
+         * Renders the lesson content into the theory panel and the task into the task panel.
+         * @param {object} data - The lesson data containing title, theory, and task.
+         */
+        function renderLesson(data) {
+            if (!lessonContainer) {
+                console.error("❌ lessonContainer not found in DOM");
+                return;
+            }
+            if (!taskPanel) {
+                console.error("❌ taskPanel not found in DOM");
+                return;
+            }
+
+            const { title, theory, task } = data;
+
+            // Render theory content to the left panel
+            lessonContainer.innerHTML = `
+                <div class="chapter-info">
+                    <div class="chapter-title">${title}</div>
+                    <div class="chapter-subtitle">${theory.concept}</div>
+                </div>
+
+                <div class="theory-section">
+                    <h3>🧠 Introduction</h3>
+                    <div class="theory-content">${theory.introduction}</div>
+                </div>
+
+                <div class="theory-section">
+                    <h3>📖 Explanation</h3>
+                    <div class="theory-content">${theory.explanation}</div>
+                </div>
+
+                <div class="theory-section">
+                    <h3>💡 Key Points</h3>
+                    <ul class="theory-content">
+                        ${theory.keyPoints.map(point => `<li>${point}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="theory-section">
+                    <h3>💻 Code Examples</h3>
+                    ${theory.codeExamples.map(example => `
+                        <pre class="code-example">${example.code}</pre>
+                        <p>${example.explanation}</p>
+                    `).join('')}
+                </div>
+
+                <div class="important-note">
+                    ${theory.importantNotes.map(note => `<div>${note}</div>`).join('')}
+                </div>
+            `;
+
+            // Render task content to the new task panel (above code editor)
+            taskPanel.innerHTML = `
+                <div class="section-title">🎯 Current Task</div>
+                <div class="task-box">
+                    <div class="task-title">🧪 Task</div>
+                    <div class="task-objective">${task.description}</div>
+                    <div class="expected-output">
+                        <strong>Expected Output:</strong><br>
+                        ${task.expectedOutput}
+                    </div>
+                </div>
+            `;
+
+
+            // Update floating hint content
+            updateHintContent(task.hints);
+        }
+
+        /**
+         * Updates the content of the floating hint panel.
+         * @param {string[]} hints - An array of hint strings.
+         */
+        function updateHintContent(hints) {
+            if (hints && hints.length > 0) {
+                hintContent.innerHTML = `
+                    <ul>
+                        ${hints.map(hint => `<li>${hint}</li>`).join('')}
+                    </ul>
+                `;
+            } else {
+                hintContent.innerHTML = '<p>No hints available for this lesson.</p>';
+            }
+        }
+
+        /**
+         * Toggles the visibility of the floating hint panel.
+         */
+        function toggleHintPanel() {
+            const isVisible = floatingHintPanel.classList.contains('show');
+
+            if (isVisible) {
+                floatingHintPanel.classList.remove('show');
+                hintBtnText.textContent = 'Show Hint';
+            } else {
+                floatingHintPanel.classList.add('show');
+                hintBtnText.textContent = 'Hide Hint';
+            }
+        }
+
+        /**
+         * Closes the floating hint panel.
+         */
+        function closeHintPanel() {
+            floatingHintPanel.classList.remove('show');
+            hintBtnText.textContent = 'Show Hint';
+        }
+
+        /**
+         * Updates various UI elements like chapter info, lesson info, and progress bar.
+         */
+        function updateUI() {
+            chapterInfo.textContent = `Chapter ${currentChapter} of ${totalChapters}`; // totalChapters is a placeholder
+            lessonInfo.textContent = `Lesson ${currentLesson}`;
+
+            // Update progress bar (rough estimation based on loaded lessons)
+            // This calculation assumes maxLessonsPerChapter is populated.
+            const totalLessons = Object.values(maxLessonsPerChapter).reduce((a, b) => a + b, 0) || 50; // Fallback to 50 if no data
+            let completedLessons = 0;
+            for (let i = 1; i < currentChapter; i++) {
+                completedLessons += maxLessonsPerChapter[i] || 0;
+            }
+            completedLessons += (currentLesson - 1);
+
+            const progress = Math.min((completedLessons / totalLessons) * 100, 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+
+            // Update navigation buttons disable state
+            prevBtn.disabled = (currentChapter === 1 && currentLesson === 1);
+            // Next button is enabled unless we explicitly set it to disabled at the end of all lessons
+            nextBtn.disabled = false;
+            nextBtn.textContent = "Next ➡️"; // Reset text in case it was "Course Complete!"
+        }
+
+        /**
+         * Fetches the number of lessons for a given chapter.
+         * Caches the result in maxLessonsPerChapter.
+         * @param {number} chapter - The chapter number.
+         * @returns {Promise<number>} - The number of lessons in the chapter.
+         */
+        async function getLastLessonNumber(chapter) {
+            if (maxLessonsPerChapter[chapter]) {
+                return maxLessonsPerChapter[chapter];
+            }
+
+            try {
+                // Attempt to load from a central exercises.json if it exists
+                const res = await fetch('exercises/exercises.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    const chapterData = data.chapters.find(c => c.id === chapter);
+                    const lessonCount = chapterData ? chapterData.lessons.length : 0;
+                    maxLessonsPerChapter[chapter] = lessonCount;
+                    return lessonCount;
+                } else {
+                    // Fallback to iterating through lesson files if exercises.json is not found
+                    throw new Error("exercises.json not found, falling back to sequential loading.");
+                }
+            } catch (e) {
+                console.warn("Failed to fetch exercises.json or chapter data:", e);
+                // Fallback: try to load lessons sequentially by guessing filenames
+                let lessonCount = 0;
+                for (let i = 1; i <= 20; i++) { // Max 20 lessons per chapter for this fallback
+                    try {
+                        const response = await fetch(`exercises/chapter-${chapter}/lesson${i}.json`);
+                        if (response.ok) {
+                            lessonCount = i;
+                        } else {
+                            break; // Stop if a lesson file is not found
+                        }
+                    } catch (err) {
+                        break; // Stop on network errors or other issues
+                    }
+                }
+                maxLessonsPerChapter[chapter] = lessonCount;
+                return lessonCount;
+            }
+        }
+
+        /**
+         * Loads a specific lesson by chapter and lesson number.
+         * Renders the lesson content and updates the UI.
+         * @param {number} chapter - The chapter number.
+         * @param {number} lesson - The lesson number.
+         * @returns {Promise<boolean>} - True if the lesson was loaded successfully, false otherwise.
+         */
+        async function loadLesson(chapter, lesson) {
+            try {
+                const response = await fetch(`exercises/chapter-${chapter}/lesson${lesson}.json`);
+                if (!response.ok) {
+                    // If lesson not found, it might be the end of the chapter
+                    console.warn(`Lesson exercises/chapter-${chapter}/lesson${lesson}.json not found.`);
+                    return false;
+                }
+
+                const data = await response.json();
+                window.lessonData = data; // Make lesson data globally accessible if needed for validation
+                renderLesson(data);
+                updateUI();
+                codeInput.value = data.task.initialCode || `# Write your Python code here\n# Try: print('Hello, World!')`; // Set initial code
+                return true;
+            } catch (error) {
+                console.error('Error loading lesson:', error);
+                return false;
+            }
+        }
+
+        /**
+         * Navigates to the next lesson or chapter.
+         */
+        async function goToNextLesson() {
+            updateOutput("📦 Loading next lesson...", 'info');
+
+            const lastLessonInCurrentChapter = await getLastLessonNumber(currentChapter);
+            let nextLesson = currentLesson + 1;
+            let targetChapter = currentChapter;
+
+            if (nextLesson > lastLessonInCurrentChapter) {
+                // Move to next chapter
+                targetChapter = currentChapter + 1;
+                const nextChapterLessonCount = await getLastLessonNumber(targetChapter);
+
+                if (nextChapterLessonCount > 0) {
+                    updateOutput(`🎉 Chapter ${currentChapter} complete! Moving to Chapter ${targetChapter}...`, 'success');
+                    nextLesson = 1; // Start from the first lesson of the new chapter
+                } else {
+                    // No more lessons in the next chapter, end of course
+                    updateOutput("🏁 No more lessons available. You've reached the end!", 'info');
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = "✅ Course Complete!";
+                    return;
+                }
+            }
+
+            const success = await loadLesson(targetChapter, nextLesson);
+            if (success) {
+                currentChapter = targetChapter;
+                currentLesson = nextLesson;
+                updateOutput(`✅ Loaded Chapter ${currentChapter}, Lesson ${currentLesson}`, 'success');
+            } else {
+                // If loading next lesson fails, it means there are no more lessons
+                updateOutput("⚠️ Could not load the next lesson. You might have reached the end of the course.", 'error');
+                nextBtn.disabled = true;
+                nextBtn.textContent = "✅ Course Complete!";
+            }
+        }
+
+        /**
+         * Navigates to the previous lesson or chapter.
+         */
+        async function goToPreviousLesson() {
+            updateOutput("📦 Loading previous lesson...", 'info');
+
+            let prevLesson = currentLesson - 1;
+            let targetChapter = currentChapter;
+
+            if (prevLesson < 1) {
+                // Move to previous chapter
+                targetChapter = currentChapter - 1;
+                if (targetChapter < 1) {
+                    updateOutput("⚠️ You're already at the first lesson!", 'error');
+                    prevBtn.disabled = true; // Ensure prev button is disabled at the very beginning
+                    return;
+                }
+                const prevChapterLessonCount = await getLastLessonNumber(targetChapter);
+                prevLesson = prevChapterLessonCount; // Go to the last lesson of the previous chapter
+            }
+
+            const success = await loadLesson(targetChapter, prevLesson);
+            if (success) {
+                currentChapter = targetChapter;
+                currentLesson = prevLesson;
+                updateOutput(`✅ Loaded Chapter ${currentChapter}, Lesson ${currentLesson}`, 'success');
+            } else {
+                updateOutput("⚠️ Could not load the previous lesson.", 'error');
+            }
+        }
+
+        // Event Listeners
+        runBtn.addEventListener('click', async function () {
+            const code = codeInput.value.trim();
+            if (!code) {
+                updateOutput("Please write some code first!", 'error');
+                return;
+            }
+
+            updateOutput("⏳ Executing code...", 'info');
+            const result = await executePython(code);
+
+            if (result.success) {
+                updateOutput(`🟢 Output:\n${result.output}`, 'success');
+            } else {
+                updateOutput(`🔴 Error:\n${result.output}`, 'error');
+            }
+        });
+
+        clearBtn.addEventListener('click', function () {
+            codeInput.value = '';
+            outputTerminal.innerHTML = '<span class="info-text">🧹 Console cleared. Ready for new code!</span>';
+        });
+
+        floatingHintBtn.addEventListener('click', toggleHintPanel);
+        hintCloseBtn.addEventListener('click', closeHintPanel);
+
+        // Close hint panel when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!floatingHintBtn.contains(event.target) &&
+                !floatingHintPanel.contains(event.target) &&
+                floatingHintPanel.classList.contains('show')) {
+                closeHintPanel();
+            }
+        });
+
+        nextBtn.addEventListener('click', goToNextLesson);
+        prevBtn.addEventListener('click', goToPreviousLesson);
+
+        // Initialize the application on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', async function() {
+            updateOutput("🚀 Initializing Python environment...", 'info');
+
+            // Setup Pyodide
+            await setupPyodide();
+
+            // Load all chapter lesson counts initially to better estimate progress
+            // This assumes 'exercises.json' exists and lists all chapters and their lessons.
+            try {
+                const res = await fetch('exercises/exercises.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    totalChapters = data.chapters.length;
+                    data.chapters.forEach(c => {
+                        maxLessonsPerChapter[c.id] = c.lessons.length;
+                    });
+                } else {
+                    console.warn("exercises.json not found. Progress bar might be less accurate.");
+                }
+            } catch (e) {
+                console.error("Error loading exercises.json:", e);
+            }
+
+
+            // Load first lesson
+            const success = await loadLesson(currentChapter, currentLesson);
+            if (success) {
+                updateOutput("✅ Ready to start coding! Write your Python code and click Run.", 'success');
+            } else {
+                updateOutput("⚠️ Could not load the first lesson. Ensure 'exercises/chapter-1/lesson1.json' exists.", 'error');
+            }
+
+            console.log('Application initialized');
+        });
+    </script>
+</body>
+</html>

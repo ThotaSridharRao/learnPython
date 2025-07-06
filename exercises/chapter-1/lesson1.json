@@ -1,0 +1,70 @@
+{
+  "id": 1,
+  "chapter": 1,
+  "title": "Hello World",
+  "difficulty": "beginner",
+  "estimatedTime": "5 minutes",
+  "theory": {
+    "concept": "Introduction to Python & Print Function",
+    "introduction": "Welcome to Python! You're about to write your first program - the famous 'Hello, World!' This is a tradition that every programmer follows when learning a new language.",
+    "explanation": "Python is a powerful yet beginner-friendly programming language. It's used by companies like Google, Netflix, and Instagram. The print() function is your first tool - it displays text on the screen.",
+    "keyPoints": [
+      "Python is case-sensitive (print vs Print)",
+      "The print() function displays text to the console",
+      "Text (strings) must be enclosed in quotes",
+      "You can use single ' or double \" quotes"
+    ],
+    "codeExamples": [
+      {
+        "code": "print('Hello, World!')",
+        "explanation": "This displays 'Hello, World!' on the screen"
+      },
+      {
+        "code": "print(\"Welcome to Python!\")",
+        "explanation": "Double quotes work the same as single quotes"
+      }
+    ],
+    "importantNotes": [
+      "💡 Python is case-sensitive! 'print' works, but 'Print' or 'PRINT' will cause an error",
+      "🔤 Always put text inside quotes - either 'text' or \"text\"",
+      "⚡ Press Ctrl+Enter to run your code quickly"
+    ]
+  },
+  "task": {
+    "objective": "Write a Python program that prints 'Hello, World!' to the console",
+    "description": "This is the traditional first program that every programmer writes. It teaches you the basic syntax of Python and how to produce output.",
+    "expectedOutput": "Hello, World!",
+    "starterCode": "# Write your Python code here\n# Try: print('Hello, World!')\n",
+    "hints": [
+      "Use the print() function",
+      "Put 'Hello, World!' inside quotes",
+      "Make sure 'print' is lowercase",
+      "Don't forget the parentheses ()"
+    ]
+  },
+  "validation": {
+    "exactMatch": [
+      "print('Hello, World!')",
+      "print(\"Hello, World!\")"
+    ],
+    "outputMatch": "Hello, World!",
+    "allowedVariations": false,
+    "commonErrors": [
+      {
+        "error": "Print('Hello, World!')",
+        "message": "Remember: Python is case-sensitive. Use 'print' not 'Print'"
+      },
+      {
+        "error": "print Hello, World!",
+        "message": "Missing parentheses. Use: print('Hello, World!')"
+      },
+      {
+        "error": "print(Hello, World!)",
+        "message": "Missing quotes around the text. Use: print('Hello, World!')"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 20,
+  "skills": ["basic_syntax", "print_function", "strings"]
+}
