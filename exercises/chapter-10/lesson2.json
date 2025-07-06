@@ -1,0 +1,57 @@
+{
+  "id": 2,
+  "chapter": 10,
+  "title": "Guess the Number",
+  "conceptId": "project/guessing-game",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "10 minutes",
+  "theory": {
+    "concept": "Build a simple guessing game",
+    "introduction": "Let's make a game where the user has to guess a secret number. We'll use the `random` module and a loop.",
+    "explanation": "Use `random.randint()` to generate a number. Ask the user to guess and give hints like 'Too high' or 'Too low' until they guess correctly.",
+    "keyPoints": [
+      "Use `import random` and `random.randint(1, 10)`",
+      "Use a `while` loop to keep asking until correct",
+      "Compare guess using `if` conditions"
+    ],
+    "codeExamples": [
+      {
+        "code": "import random\nsecret = random.randint(1, 10)\n\nwhile True:\n    guess = int(input(\"Guess a number: \"))\n    if guess == secret:\n        print(\"Correct!\")\n        break\n    elif guess < secret:\n        print(\"Too low!\")\n    else:\n        print(\"Too high!\")",
+        "explanation": "Full game logic using loop"
+      }
+    ],
+    "importantNotes": [
+      "🎯 Always convert `input()` to `int()` for numeric guess",
+      "🔁 Loop continues until correct guess"
+    ],
+    "references": [
+      "https://realpython.com/python-random/"
+    ]
+  },
+  "task": {
+    "objective": "Build a number guessing game with feedback",
+    "description": "Generate a random number between 1 and 10. Let the user guess until correct. Print 'Too high' or 'Too low' based on guess.",
+    "expectedOutput": "Correct!",
+    "starterCode": "# Random guessing game\nimport random\n# Add your code here...\n",
+    "hints": [
+      "Use `random.randint()` for the number",
+      "Loop until guess matches the secret",
+      "Use `int(input(...))` to get numeric input"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Correct!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "random.random()",
+        "message": "`random()` gives a float — use `randint()` for whole numbers"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 65,
+  "skills": ["loop", "random", "input", "comparison"],
+  "tags": ["project", "game", "random", "loop"]
+}

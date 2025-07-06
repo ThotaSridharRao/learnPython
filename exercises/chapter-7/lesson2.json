@@ -1,0 +1,56 @@
+{
+  "id": 2,
+  "chapter": 7,
+  "title": "Function Parameters and Arguments",
+  "conceptId": "functions/parameters",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Passing Values into Functions",
+    "introduction": "You can send values into a function using parameters. This makes the function dynamic and flexible.",
+    "explanation": "Define a function with parameters inside the parentheses. Pass actual values (arguments) when calling it. The parameter becomes a variable within the function body.",
+    "keyPoints": [
+      "Parameters go inside `def greet(name):`",
+      "Arguments are the actual values you pass when calling",
+      "You can use multiple parameters separated by commas"
+    ],
+    "codeExamples": [
+      {
+        "code": "def greet(name):\n    print(\"Hello, \" + name)\n\ngreet(\"Shridhar\")",
+        "explanation": "Passing a name as argument"
+      }
+    ],
+    "importantNotes": [
+      "📌 Arguments must match the number of parameters",
+      "✅ Use different names as arguments when calling"
+    ],
+    "references": [
+      "https://realpython.com/defining-your-own-python-function/"
+    ]
+  },
+  "task": {
+    "objective": "Create a function that takes a name and greets the person",
+    "description": "Write a function `greet_user(name)` that prints `Hello, <name>!`. Call it with the name `'Shridhar'`.",
+    "expectedOutput": "Hello, Shridhar!",
+    "starterCode": "# Define a function with a parameter\n",
+    "hints": [
+      "Use `def greet_user(name):`",
+      "Call the function with `greet_user(\"Shridhar\")`"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Hello, Shridhar!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "def greet_user():",
+        "message": "Your function must accept a `name` parameter"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 40,
+  "skills": ["parameters", "arguments", "function_call"],
+  "tags": ["functions", "dynamic", "input"]
+}

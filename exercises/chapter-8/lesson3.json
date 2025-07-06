@@ -1,0 +1,56 @@
+{
+  "id": 3,
+  "chapter": 8,
+  "title": "Reading from a File",
+  "conceptId": "io/read-file",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Using `open()` to Read a File",
+    "introduction": "Python can read data from files using the `open()` function. This is useful for loading content like settings, data, or text.",
+    "explanation": "Use `open('filename.txt')` in read mode (`'r'`). Use `.read()` to get the full content, or `.readlines()` to get a list of lines. Always close the file after reading, or use `with open()`.",
+    "keyPoints": [
+      "Use `with open(filename) as f:` to safely open files",
+      "Use `.read()` or `.readlines()` to get file content",
+      "Make sure the file exists in the same folder"
+    ],
+    "codeExamples": [
+      {
+        "code": "with open(\"demo.txt\", \"r\") as file:\n    content = file.read()\n    print(content)",
+        "explanation": "Opens a file and prints all its content"
+      }
+    ],
+    "importantNotes": [
+      "📌 Always use `with` to avoid forgetting to close the file",
+      "⚠️ File must exist — else you'll get a FileNotFoundError"
+    ],
+    "references": [
+      "https://realpython.com/read-write-files-python/"
+    ]
+  },
+  "task": {
+    "objective": "Read and print file content",
+    "description": "Assume a file `sample.txt` exists with the line: `Learning Python is fun!`. Write code to open it, read the content, and print it.",
+    "expectedOutput": "Learning Python is fun!",
+    "starterCode": "# Open and read the file\n",
+    "hints": [
+      "Use `with open()` block",
+      "Use `.read()` to read the whole file"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Learning Python is fun!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "open(\"sample.txt\")",
+        "message": "Make sure you're using `with open(...) as file:` syntax"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 40,
+  "skills": ["file_reading", "with_open", "read"],
+  "tags": ["file", "read", "io"]
+}

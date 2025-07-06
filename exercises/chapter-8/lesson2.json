@@ -1,0 +1,60 @@
+{
+  "id": 2,
+  "chapter": 8,
+  "title": "Formatting Output with print()",
+  "conceptId": "io/print-formatting",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Customizing Print Statements",
+    "introduction": "The `print()` function can do more than just show plain text. You can combine variables, add new lines, and format output cleanly.",
+    "explanation": "You can print multiple variables with commas, use `\\n` for new lines, or use f-strings for clean formatting. F-strings are the modern way to embed variables into strings.",
+    "keyPoints": [
+      "Use `print(\"Hello\", name)` to print multiple items",
+      "Use `f\"Hello, {name}\"` for formatted strings",
+      "Use `\\n` to move to a new line"
+    ],
+    "codeExamples": [
+      {
+        "code": "name = \"Shridhar\"\nprint(f\"Welcome, {name}!\")",
+        "explanation": "F-string for formatted printing"
+      },
+      {
+        "code": "print(\"Line 1\\nLine 2\")",
+        "explanation": "Using newline character"
+      }
+    ],
+    "importantNotes": [
+      "📌 F-strings start with `f` before the string",
+      "🧠 Avoid too many `+` operations — use f-strings for readability"
+    ],
+    "references": [
+      "https://realpython.com/python-f-strings/"
+    ]
+  },
+  "task": {
+    "objective": "Use f-string and newline formatting",
+    "description": "Create a variable `user = 'Shridhar'`. Print `Welcome, Shridhar!` followed by `Start your Python journey!` on a new line.",
+    "expectedOutput": "Welcome, Shridhar!\nStart your Python journey!",
+    "starterCode": "# Use f-string and \\n in print\n",
+    "hints": [
+      "Use `f\"Welcome, {user}\"`",
+      "Use `\\n` for the line break"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Welcome, Shridhar!\nStart your Python journey!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "\"Welcome,\" + user",
+        "message": "Try using an f-string instead of concatenation"
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 40,
+  "skills": ["print", "fstring", "newline"],
+  "tags": ["output", "format", "f-string"]
+}

@@ -1,0 +1,57 @@
+{
+  "id": 1,
+  "chapter": 10,
+  "title": "BMI Calculator",
+  "conceptId": "project/bmi",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "12 minutes",
+  "theory": {
+    "concept": "Build a simple health calculator",
+    "introduction": "Let’s calculate Body Mass Index (BMI) using user input for height and weight.",
+    "explanation": "BMI = weight (kg) ÷ height² (m²). You'll need to get input from the user, convert it to float, calculate BMI, and display a message based on the result.",
+    "keyPoints": [
+      "Use `input()` and `float()` to get numeric input",
+      "Perform calculations using operators",
+      "Use `if/elif/else` to categorize results"
+    ],
+    "codeExamples": [
+      {
+        "code": "height = float(input(\"Enter height in meters: \"))\nweight = float(input(\"Enter weight in kg: \"))\nbmi = weight / (height ** 2)\nprint(\"BMI:\", bmi)",
+        "explanation": "Basic BMI formula implementation"
+      }
+    ],
+    "importantNotes": [
+      "✅ Use `**` for power (height²)",
+      "📌 Use `float()` for decimal values"
+    ],
+    "references": [
+      "https://www.cdc.gov/healthyweight/assessing/bmi/"
+    ]
+  },
+  "task": {
+    "objective": "Build a BMI calculator that categorizes the result",
+    "description": "Ask the user for height and weight, calculate BMI, and print a category like 'Underweight', 'Normal', 'Overweight', or 'Obese'.",
+    "expectedOutput": "Your BMI is 22.0 (Normal)",
+    "starterCode": "# Get height and weight from user\n# Calculate and print BMI with category\n",
+    "hints": [
+      "Use `float(input(...))` for both values",
+      "Use `if-elif-else` to classify the BMI",
+      "Under 18.5: Underweight, 18.5–24.9: Normal, 25–29.9: Overweight, 30+: Obese"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Your BMI is 22.0 (Normal)",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "int(input(...))",
+        "message": "Use `float()` for more accurate BMI calculation"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 60,
+  "skills": ["input", "float", "arithmetic", "conditionals"],
+  "tags": ["project", "bmi", "calculation", "input"]
+}

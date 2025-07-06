@@ -1,0 +1,56 @@
+{
+  "id": 4,
+  "chapter": 7,
+  "title": "Using Lambda (Anonymous) Functions",
+  "conceptId": "functions/lambda",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Creating Short Anonymous Functions",
+    "introduction": "Sometimes you need a quick one-line function. Python lets you create small, unnamed functions using `lambda`.",
+    "explanation": "A `lambda` function has no name. Use it for simple tasks where defining a full `def` function isn’t necessary. The syntax is: `lambda arguments: expression`.",
+    "keyPoints": [
+      "Syntax: `lambda x: x + 1`",
+      "Can take any number of inputs, but only one expression",
+      "Useful with `map()`, `filter()`, and sorting"
+    ],
+    "codeExamples": [
+      {
+        "code": "double = lambda x: x * 2\nprint(double(4))",
+        "explanation": "A lambda function that doubles input"
+      }
+    ],
+    "importantNotes": [
+      "📌 Lambdas are best for short operations",
+      "❌ Don’t use lambdas for complex logic — use `def` instead"
+    ],
+    "references": [
+      "https://realpython.com/python-lambda/"
+    ]
+  },
+  "task": {
+    "objective": "Create and use a lambda function",
+    "description": "Write a lambda function to multiply a number by 3. Store it in a variable and call it with 5. Print the result.",
+    "expectedOutput": "15",
+    "starterCode": "# Use lambda to multiply a number by 3\n",
+    "hints": [
+      "Use `lambda x: x * 3`",
+      "Store in a variable like `triple = lambda x: x * 3`"
+    ]
+  },
+  "validation": {
+    "outputMatch": "15",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "def triple(x): return x * 3",
+        "message": "Try using a lambda instead of a regular function"
+      }
+    ]
+  },
+  "nextLesson": 5,
+  "xpReward": 40,
+  "skills": ["lambda", "anonymous_function", "expression"],
+  "tags": ["lambda", "short_function", "anonymous"]
+}

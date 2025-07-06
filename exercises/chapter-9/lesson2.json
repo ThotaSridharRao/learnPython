@@ -1,0 +1,56 @@
+{
+  "id": 2,
+  "chapter": 9,
+  "title": "Handling Errors with try/except",
+  "conceptId": "errors/try-except",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Catching and Handling Errors",
+    "introduction": "You can use `try` and `except` blocks to catch errors before they crash your program.",
+    "explanation": "`try` contains the code that might break. If an error occurs, the `except` block runs. This keeps your program running smoothly.",
+    "keyPoints": [
+      "Use `try:` before risky code",
+      "Use `except:` to handle the error",
+      "You can catch specific errors like `ZeroDivisionError`"
+    ],
+    "codeExamples": [
+      {
+        "code": "try:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero!\")",
+        "explanation": "Catches division error"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ Catch only errors you expect — don’t use bare `except:` unless necessary",
+      "🧠 Add a helpful message in the `except` block"
+    ],
+    "references": [
+      "https://realpython.com/python-exceptions/"
+    ]
+  },
+  "task": {
+    "objective": "Use try/except to avoid program crash",
+    "description": "Write code that tries to divide a number by zero. Catch the error and print `Cannot divide by zero!` instead.",
+    "expectedOutput": "Cannot divide by zero!",
+    "starterCode": "# Handle error using try/except\n",
+    "hints": [
+      "Put division inside `try:`",
+      "Use `except ZeroDivisionError:` to catch it"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Cannot divide by zero!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(10 / 0)",
+        "message": "This will crash. Use `try/except` to catch the error."
+      }
+    ]
+  },
+  "nextLesson": 3,
+  "xpReward": 40,
+  "skills": ["try_except", "error_handling"],
+  "tags": ["exception", "try", "catch", "error"]
+}

@@ -1,0 +1,56 @@
+{
+  "id": 1,
+  "chapter": 8,
+  "title": "Getting Input from the User",
+  "conceptId": "io/input",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Using input() to Get Data from the User",
+    "introduction": "`input()` allows your program to accept user input during execution. It's how you make interactive programs.",
+    "explanation": "When `input()` runs, Python waits for the user to type something. Whatever they type is returned as a string. You can store it in a variable.",
+    "keyPoints": [
+      "Use `input(\"Prompt\")` to show a message to the user",
+      "The result is always a string, even if numbers are typed",
+      "Use `int()` or `float()` to convert input if needed"
+    ],
+    "codeExamples": [
+      {
+        "code": "name = input(\"What's your name? \")\nprint(\"Hello, \" + name)",
+        "explanation": "Takes input and prints a message"
+      }
+    ],
+    "importantNotes": [
+      "✅ Always store input in a variable",
+      "🧠 Convert inputs to numbers if you plan to do math"
+    ],
+    "references": [
+      "https://www.w3schools.com/python/ref_func_input.asp"
+    ]
+  },
+  "task": {
+    "objective": "Use `input()` to take and display user data",
+    "description": "Ask the user for their favorite color and print: `Your favorite color is <color>`.",
+    "expectedOutput": "Your favorite color is Blue",
+    "starterCode": "# Get color from user and print it\n",
+    "hints": [
+      "Use `input(\"What's your favorite color? \")`",
+      "Use string concatenation to print"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Your favorite color is Blue",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"Blue\")",
+        "message": "You should get the color from the user, not hardcode it"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 35,
+  "skills": ["input", "print", "variables"],
+  "tags": ["input", "user", "string"]
+}

@@ -1,0 +1,61 @@
+{
+  "id": 1,
+  "chapter": 9,
+  "title": "Common Python Errors",
+  "conceptId": "errors/common",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "6 minutes",
+  "theory": {
+    "concept": "Understanding Common Mistakes",
+    "introduction": "When writing code, mistakes (errors) are normal. Learning to recognize and understand them is the first step to fixing them.",
+    "explanation": "There are different kinds of errors in Python — syntax errors, name errors, type errors, and more. These error messages help you debug.",
+    "keyPoints": [
+      "SyntaxError: code is not written correctly",
+      "NameError: using variables that are not defined",
+      "TypeError: using values of wrong type together",
+      "ValueError: a function gets an invalid value"
+    ],
+    "codeExamples": [
+      {
+        "code": "prin(\"Hello\")",
+        "explanation": "Causes a NameError (misspelled 'print')"
+      },
+      {
+        "code": "age = \"18\" + 2",
+        "explanation": "Causes a TypeError (string + int)"
+      }
+    ],
+    "importantNotes": [
+      "📌 Always read the error message — it tells you the line and type of issue",
+      "🧠 Fixing bugs is part of the coding process!"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/errors.html"
+    ]
+  },
+  "task": {
+    "objective": "Trigger and understand a common error",
+    "description": "Write a line of code that causes a `NameError`. Then fix the error by correcting the name.",
+    "expectedOutput": "Hello",
+    "starterCode": "# Fix the error below\nprnt(\"Hello\")\n",
+    "hints": [
+      "Check spelling of the function name",
+      "Use `print()` properly"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Hello",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "prnt(\"Hello\")",
+        "message": "You need to correct the function name to `print()`"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 35,
+  "skills": ["debugging", "syntax", "name_error"],
+  "tags": ["error", "debugging", "exceptions"]
+}

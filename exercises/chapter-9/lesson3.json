@@ -1,0 +1,60 @@
+{
+  "id": 3,
+  "chapter": 9,
+  "title": "Using Python Modules",
+  "conceptId": "modules/importing",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Importing and Using Built-in Modules",
+    "introduction": "Python comes with many useful modules built in. You can `import` them to access extra features like math, random numbers, and dates.",
+    "explanation": "Use `import module_name` at the top of your code. Then access functions using dot notation, like `math.sqrt()`.",
+    "keyPoints": [
+      "Use `import module_name` to bring in a module",
+      "Use `module.function()` to access its features",
+      "Popular modules: `math`, `random`, `datetime`"
+    ],
+    "codeExamples": [
+      {
+        "code": "import math\nprint(math.sqrt(16))",
+        "explanation": "Using the math module to get square root"
+      },
+      {
+        "code": "import random\nprint(random.randint(1, 10))",
+        "explanation": "Generate a random integer"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Use modules to avoid writing everything yourself",
+      "✅ Built-in modules come pre-installed with Python"
+    ],
+    "references": [
+      "https://docs.python.org/3/library/"
+    ]
+  },
+  "task": {
+    "objective": "Use the `math` module",
+    "description": "Import the `math` module and print the square root of 81 using `math.sqrt()`.",
+    "expectedOutput": "9.0",
+    "starterCode": "# Use math module to calculate square root\n",
+    "hints": [
+      "Use `import math` at the top",
+      "Use `math.sqrt(81)`"
+    ]
+  },
+  "validation": {
+    "outputMatch": "9.0",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "sqrt(81)",
+        "message": "Use `math.sqrt()` — don't forget to prefix with module name"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 40,
+  "skills": ["import", "module_usage", "math"],
+  "tags": ["module", "builtin", "import"]
+}

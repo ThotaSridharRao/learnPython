@@ -1,0 +1,60 @@
+{
+  "id": 3,
+  "chapter": 7,
+  "title": "Return Values and Variable Scope",
+  "conceptId": "functions/return-scope",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Returning Results and Understanding Scope",
+    "introduction": "Functions can return values to be reused. Also, variables have scope — where they are accessible.",
+    "explanation": "Use `return` to send data back to the caller. Variables created inside a function are local and not accessible outside it.",
+    "keyPoints": [
+      "Use `return` to give back a result",
+      "Returned values can be stored in variables",
+      "Variables inside a function are local in scope"
+    ],
+    "codeExamples": [
+      {
+        "code": "def square(x):\n    return x * x\n\nresult = square(4)\nprint(result)",
+        "explanation": "Returns a value and stores it"
+      },
+      {
+        "code": "def greet():\n    message = \"Hi\"\n    return message\n\nprint(greet())",
+        "explanation": "Shows return and local scope"
+      }
+    ],
+    "importantNotes": [
+      "✅ Every function ends after `return` is executed",
+      "⚠️ Trying to access local variables outside causes an error"
+    ],
+    "references": [
+      "https://realpython.com/python-return-statement/"
+    ]
+  },
+  "task": {
+    "objective": "Write a function that returns a value",
+    "description": "Create a function `add(a, b)` that returns the sum of two numbers. Call it with 5 and 7, store the result in a variable, and print it.",
+    "expectedOutput": "12",
+    "starterCode": "# Define a function that returns a value\n",
+    "hints": [
+      "Use `return a + b` inside the function",
+      "Call it with `add(5, 7)` and store the result"
+    ]
+  },
+  "validation": {
+    "outputMatch": "12",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(add)",
+        "message": "You must call the function with arguments: `add(5, 7)`"
+      }
+    ]
+  },
+  "nextLesson": 4,
+  "xpReward": 40,
+  "skills": ["return", "local_scope", "store_result"],
+  "tags": ["functions", "return", "scope"]
+}

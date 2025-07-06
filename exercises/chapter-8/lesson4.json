@@ -1,0 +1,56 @@
+{
+  "id": 4,
+  "chapter": 8,
+  "title": "Writing to a File",
+  "conceptId": "io/write-file",
+  "difficulty": "beginner",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Saving Data into Files",
+    "introduction": "You can write to files in Python to save user input, results, logs, or settings. This makes your programs more useful and interactive.",
+    "explanation": "Use `open('filename.txt', 'w')` to write (and overwrite). Use `.write()` to save text. Close the file afterward or use `with open()` to do it automatically.",
+    "keyPoints": [
+      "Use `'w'` for writing (overwrites file)",
+      "Use `'a'` for appending (adds to end)",
+      "Always write strings — convert numbers first"
+    ],
+    "codeExamples": [
+      {
+        "code": "with open(\"log.txt\", \"w\") as file:\n    file.write(\"Log started.\")",
+        "explanation": "Creates and writes to a file"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ Writing with `'w'` clears previous file content",
+      "✅ Use `with` to ensure files close properly"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files"
+    ]
+  },
+  "task": {
+    "objective": "Write text into a new file",
+    "description": "Create a file `message.txt` and write `Hello, file world!` into it using `with open()`.",
+    "expectedOutput": "✅ File written successfully!",
+    "starterCode": "# Write to a file using with open()\n",
+    "hints": [
+      "Use `'w'` mode with `open()`",
+      "Use `.write()` to save the string"
+    ]
+  },
+  "validation": {
+    "outputMatch": "✅ File written successfully!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "open('message.txt')",
+        "message": "You're missing the mode `'w'` — use `open('message.txt', 'w')`"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 45,
+  "skills": ["file_writing", "with_open", "write"],
+  "tags": ["file", "write", "save"]
+}

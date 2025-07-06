@@ -1,0 +1,56 @@
+{
+  "id": 1,
+  "chapter": 7,
+  "title": "Defining and Calling Functions",
+  "conceptId": "functions/definition",
+  "difficulty": "beginner",
+  "difficultyLevel": 1,
+  "estimatedTime": "7 minutes",
+  "theory": {
+    "concept": "Reusable Blocks of Code",
+    "introduction": "Functions let you reuse blocks of code by defining them once and calling them whenever needed.",
+    "explanation": "Use `def` to define a function. Give it a name and parentheses `()`. Indent the code that belongs to it. Call the function by using its name followed by parentheses.",
+    "keyPoints": [
+      "Start function with `def function_name():`",
+      "Use indentation to define the body",
+      "Call the function with `function_name()`"
+    ],
+    "codeExamples": [
+      {
+        "code": "def greet():\n    print(\"Hello!\")\n\ngreet()",
+        "explanation": "Defines and calls a function that prints a message"
+      }
+    ],
+    "importantNotes": [
+      "🧠 Functions must be defined before they are called",
+      "💡 You can define multiple functions in a script"
+    ],
+    "references": [
+      "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+    ]
+  },
+  "task": {
+    "objective": "Create and call a function that prints a message",
+    "description": "Define a function `welcome()` that prints `Welcome to Python!` and then call it.",
+    "expectedOutput": "Welcome to Python!",
+    "starterCode": "# Define a function and call it\n",
+    "hints": [
+      "Use `def welcome():` to define it",
+      "Use correct indentation inside the function"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Welcome to Python!",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print(\"Welcome to Python!\")",
+        "message": "You need to define and call a function — not just print"
+      }
+    ]
+  },
+  "nextLesson": 2,
+  "xpReward": 35,
+  "skills": ["function_definition", "call_function"],
+  "tags": ["function", "reusability", "basics"]
+}

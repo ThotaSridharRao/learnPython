@@ -1,0 +1,58 @@
+{
+  "id": 5,
+  "chapter": 7,
+  "title": "Function Best Practices",
+  "conceptId": "functions/best-practices",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Writing Clean and Reusable Functions",
+    "introduction": "Great code uses functions effectively. This means giving them good names, using comments, and avoiding repetition.",
+    "explanation": "Keep each function focused on a single task. Use meaningful parameter names. Keep them short and testable. Avoid too many global variables.",
+    "keyPoints": [
+      "Use clear names for functions and parameters",
+      "Break large logic into smaller functions",
+      "Comment what your function does",
+      "Avoid using too many global variables"
+    ],
+    "codeExamples": [
+      {
+        "code": "def calculate_area(width, height):\n    return width * height",
+        "explanation": "Descriptive function with clear parameters"
+      }
+    ],
+    "importantNotes": [
+      "✅ Reuse functions instead of copying code",
+      "🧠 Document complex logic inside functions",
+      "📌 Avoid side effects (changing external data)"
+    ],
+    "references": [
+      "https://peps.python.org/pep-0008/#function-and-variable-names"
+    ]
+  },
+  "task": {
+    "objective": "Practice clean function design",
+    "description": "Create a function `get_full_name(first, last)` that returns the full name with a space. Call it with `'Shridhar'` and `'Patil'`, then print the result.",
+    "expectedOutput": "Shridhar Patil",
+    "starterCode": "# Write a clean, reusable function\n",
+    "hints": [
+      "Use `return first + ' ' + last`",
+      "Use clear parameter names"
+    ]
+  },
+  "validation": {
+    "outputMatch": "Shridhar Patil",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "print('Shridhar Patil')",
+        "message": "Use a function to return and then print the result"
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 45,
+  "skills": ["function_design", "naming", "return_string"],
+  "tags": ["functions", "clean_code", "design"]
+}

@@ -1,0 +1,57 @@
+{
+  "id": 4,
+  "chapter": 9,
+  "title": "Installing External Packages with pip",
+  "conceptId": "modules/pip-install",
+  "difficulty": "intermediate",
+  "difficultyLevel": 2,
+  "estimatedTime": "8 minutes",
+  "theory": {
+    "concept": "Using pip to Install External Libraries",
+    "introduction": "`pip` lets you install external libraries like `numpy`, `pandas`, or `requests`. These libraries add powerful tools to your projects.",
+    "explanation": "Use `pip install package_name` in the terminal or command prompt. Once installed, import it into your Python script like any other module.",
+    "keyPoints": [
+      "Use `pip install` in the terminal (not inside Python code)",
+      "After installation, use `import` in your script",
+      "Useful packages: `requests`, `matplotlib`, `numpy`, etc."
+    ],
+    "codeExamples": [
+      {
+        "code": "# In terminal:\npip install requests\n\n# In Python file:\nimport requests\nprint(requests.get(\"https://example.com\"))",
+        "explanation": "Installing and using the requests module"
+      }
+    ],
+    "importantNotes": [
+      "⚠️ You cannot use `pip` inside normal `.py` files — it must be in terminal",
+      "🧠 Only install packages you trust"
+    ],
+    "references": [
+      "https://pypi.org",
+      "https://pip.pypa.io/en/stable/"
+    ]
+  },
+  "task": {
+    "objective": "Install and use a pip package",
+    "description": "Install the `requests` module using pip (in terminal). Then import it and print the result of a GET request to `https://example.com`.",
+    "expectedOutput": "<Response [200]>",
+    "starterCode": "# Use pip install requests (in terminal), then:\nimport requests\nprint(requests.get(\"https://example.com\"))",
+    "hints": [
+      "Use `pip install requests` in your terminal",
+      "Then use `import requests` and call `.get()`"
+    ]
+  },
+  "validation": {
+    "outputMatch": "<Response [200]>",
+    "allowedVariations": true,
+    "commonErrors": [
+      {
+        "error": "pip install requests in code",
+        "message": "You cannot use `pip` in Python code. Run it in the terminal."
+      }
+    ]
+  },
+  "nextLesson": null,
+  "xpReward": 45,
+  "skills": ["pip", "external_module", "requests"],
+  "tags": ["pip", "install", "packages"]
+}

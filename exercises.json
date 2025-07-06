@@ -291,6 +291,192 @@
           "concepts": ["final_project", "capstone"]
         }
       ]
+    },
+    {
+      "id": 6,
+      "title": "Input and Output",
+      "description": "Handle user input and file operations",
+      "difficulty": "beginner",
+      "estimatedTime": "2 hours",
+      "lessons": [
+        {
+          "id": 41,
+          "title": "User Input",
+          "file": "chapter-6/lesson1.json",
+          "concepts": [
+            "input",
+            "user_input",
+            "casting"
+          ]
+        },
+        {
+          "id": 42,
+          "title": "Output Formatting",
+          "file": "chapter-6/lesson2.json",
+          "concepts": [
+            "print",
+            "formatting",
+            "f_strings"
+          ]
+        },
+        {
+          "id": 43,
+          "title": "Reading from a File",
+          "file": "chapter-6/lesson3.json",
+          "concepts": [
+            "file_reading",
+            "with_open",
+            "read"
+          ]
+        },
+        {
+          "id": 44,
+          "title": "Writing to a File",
+          "file": "chapter-6/lesson4.json",
+          "concepts": [
+            "file_writing",
+            "write",
+            "with_open"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Error Handling and Debugging",
+      "description": "Learn to handle errors and exceptions in Python",
+      "difficulty": "intermediate",
+      "estimatedTime": "1.5 hours",
+      "lessons": [
+        {
+          "id": 45,
+          "title": "Common Errors",
+          "file": "chapter-7/lesson1.json",
+          "concepts": [
+            "syntax_error",
+            "name_error",
+            "type_error"
+          ]
+        },
+        {
+          "id": 46,
+          "title": "try/except Handling",
+          "file": "chapter-7/lesson2.json",
+          "concepts": [
+            "try_except",
+            "error_handling"
+          ]
+        },
+        {
+          "id": 47,
+          "title": "Importing Modules",
+          "file": "chapter-7/lesson3.json",
+          "concepts": [
+            "import",
+            "modules",
+            "standard_library"
+          ]
+        },
+        {
+          "id": 48,
+          "title": "Installing with pip",
+          "file": "chapter-7/lesson4.json",
+          "concepts": [
+            "pip",
+            "packages",
+            "external_libraries"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Advanced Python Concepts",
+      "description": "Dive deeper with OOP and advanced techniques",
+      "difficulty": "advanced",
+      "estimatedTime": "2 hours",
+      "lessons": [
+        {
+          "id": 49,
+          "title": "Classes and Objects",
+          "file": "chapter-8/lesson1.json",
+          "concepts": [
+            "classes",
+            "objects",
+            "oop"
+          ]
+        },
+        {
+          "id": 50,
+          "title": "Inheritance and Polymorphism",
+          "file": "chapter-8/lesson2.json",
+          "concepts": [
+            "inheritance",
+            "polymorphism",
+            "oop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Working with Libraries and APIs",
+      "description": "Explore Python's ecosystem with useful libraries",
+      "difficulty": "advanced",
+      "estimatedTime": "1.5 hours",
+      "lessons": [
+        {
+          "id": 51,
+          "title": "Using Requests Library",
+          "file": "chapter-9/lesson1.json",
+          "concepts": [
+            "requests",
+            "http",
+            "api_call"
+          ]
+        },
+        {
+          "id": 52,
+          "title": "Using JSON Data",
+          "file": "chapter-9/lesson2.json",
+          "concepts": [
+            "json",
+            "dict",
+            "api_response"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Final Projects",
+      "description": "Apply all the concepts you've learned in real projects",
+      "difficulty": "intermediate",
+      "estimatedTime": "2 hours",
+      "lessons": [
+        {
+          "id": 53,
+          "title": "BMI Calculator",
+          "file": "chapter-10/lesson1.json",
+          "concepts": [
+            "input",
+            "math",
+            "conditionals",
+            "project"
+          ]
+        },
+        {
+          "id": 54,
+          "title": "Number Guessing Game",
+          "file": "chapter-10/lesson2.json",
+          "concepts": [
+            "loops",
+            "random",
+            "user_input",
+            "game"
+          ]
+        }
+      ]
     }
   ],
   "skillsTree": {
