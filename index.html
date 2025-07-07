@@ -962,7 +962,18 @@ Status: Waiting for your code...</span>
         let pyodideReady = false;
         let pyodideInstance = null;
         let totalChapters = 10; // This should ideally come from exercises.json
-        let maxLessonsPerChapter = {}; // Cache for lesson counts per chapter
+        let maxLessonsPerChapter = {
+            1: 4,  // Chapter 1 has 5 lessons
+            2: 5,  // Chapter 2 has 6 lessons
+            3: 4,  // Chapter 3 has 7 lessons
+            4: 4,  // Chapter 4 has 8 lessons
+            5: 5,  // Chapter 5 has 6 lessons
+            6: 6,  // Chapter 6 has 7 lessons
+            7: 5,  // Chapter 7 has 8 lessons
+            8: 4,  // Chapter 8 has 9 lessons
+            9: 4,  // Chapter 9 has 8 lessons
+            10: 2 // Chapter 10 has 10 lessons
+        };
 
         // DOM elements
         const runBtn = document.getElementById('runBtn');
