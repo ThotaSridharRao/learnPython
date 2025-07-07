@@ -1309,9 +1309,11 @@ sys.stdout = _old_stdout # Restore original stdout
                     nextLesson = 1; // Start from the first lesson of the new chapter
                 } else {
                     // No more lessons in the next chapter, end of course
-                    updateOutput("🏁 No more lessons available. You've reached the end!", 'info');
-                    nextBtn.disabled = true;
-                    nextBtn.textContent = "✅ Course Complete!";
+                    updateOutput("🏁 Congratulations! You've completed all lessons!", 'success');
+                    nextBtn.textContent = "🎯 Go to Tasks";
+                    nextBtn.onclick = function() {
+                        window.location.href = 'tasks.html';
+                    };
                     return;
                 }
             }
@@ -1323,11 +1325,13 @@ sys.stdout = _old_stdout # Restore original stdout
             const success = await loadLesson(targetChapter, nextLesson);
             if (success) {
                 updateOutput(`✅ Loaded Chapter ${currentChapter}, Lesson ${currentLesson}`, 'success');
-            } else {
+           } else {
                 // If loading next lesson fails, it means there are no more lessons
-                updateOutput("⚠️ Could not load the next lesson. You might have reached the end of the course.", 'error');
-                nextBtn.disabled = true;
-                nextBtn.textContent = "✅ Course Complete!";
+                updateOutput("🎉 All lessons completed! Ready for practice tasks?", 'success');
+                nextBtn.textContent = "🎯 Go to Tasks";
+                nextBtn.onclick = function() {
+                    window.location.href = 'tasks.html';
+                };
             }
         }
 
