@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "title": "Portfolio Card Generator",
+  "description": "Ask the user for their name, age, and favorite hobby, then print a nicely formatted introduction card.",
+  "difficulty": "beginner",
+  "tags": ["input", "strings", "variables"],
+  "requirements": [
+    "Take input from the user (name, age, hobby)",
+    "Store them in variables",
+    "Display them in a formatted output using print()"
+  ],
+  "hints": [
+    "Use input() to get user details.",
+    "Use \\n to break lines.",
+    "Use string formatting or f-strings."
+  ],
+  "starterCode": "# Ask the user for name, age, and hobby\n# Then print it in a formatted card\n",
+  "expectedOutputExample": "👤 Name: Shridhar\n🎂 Age: 20\n🎮 Hobby: Gaming"
+}

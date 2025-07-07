@@ -1,0 +1,20 @@
+{
+  "id": 2,
+  "title": "Simple Calculator",
+  "description": "Create a basic calculator that performs add, subtract, multiply, and divide operations using functions.",
+  "difficulty": "beginner",
+  "tags": ["functions", "arithmetic", "input"],
+  "requirements": [
+    "Create separate functions for each operation: add, subtract, multiply, divide.",
+    "Take two numbers and an operator as input from the user.",
+    "Call the correct function based on the user's selected operation.",
+    "Display the result using print()."
+  ],
+  "hints": [
+    "Define separate functions for each operation.",
+    "Convert input to integers using int().",
+    "Use if/else to ask for the operation."
+  ],
+  "starterCode": "def add(a, b):\n    return a + b\n\n# Define subtract, multiply, divide",
+  "expectedOutputExample": "Enter first number: 4\nEnter second number: 2\nEnter operation (+, -, *, /): +\nResult: 6"
+}

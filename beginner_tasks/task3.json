@@ -1,0 +1,18 @@
+{
+  "id": 3,
+  "title": "Age Category Checker",
+  "description": "Take age as input and print the category (Child, Teen, Adult, Senior).",
+  "difficulty": "beginner",
+  "tags": ["if_else", "comparisons", "input"],
+  "requirements": [
+    "Ask the user to enter their age.",
+    "Use if-elif-else to determine if the user is a Child, Teen, Adult, or Senior.",
+    "Display the category using print()."
+  ],
+  "hints": [
+    "Use int(input()) to convert age.",
+    "Use if age < 13, elif age < 20, etc."
+  ],
+  "starterCode": "# Take age as input\n# Check which category it falls under using if-elif-else\n",
+  "expectedOutputExample": "Enter age: 16\nCategory: Teen"
+}

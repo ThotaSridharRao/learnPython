@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTerminal - Project Challenges</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Global Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f7fafc;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .level-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 14px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            box-shadow: 0 2px 10px rgba(72, 187, 120, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78 0%, #38a169 100%);
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(72, 187, 120, 0.4);
+        }
+
+        /* Level Overview Panel */
+        .level-overview {
+            background: white;
+            padding: 40px;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #2d3748;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .level-stats {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-radius: 12px;
+            border: 1px solid #81e6d9;
+            box-shadow: 0 2px 10px rgba(129, 230, 217, 0.2);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #234e52;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #2d3748;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card.completed {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+
+        .project-card.current {
+            border-color: #4299e1;
+            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        }
+
+        .project-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .project-card.locked:hover {
+            transform: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .project-difficulty {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .difficulty-easy {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .difficulty-medium {
+            background: #fef5e7;
+            color: #744210;
+        }
+
+        .difficulty-hard {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .project-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .project-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .status-icon {
+            font-size: 20px;
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .start-project-btn {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .start-project-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+        }
+
+        .start-project-btn:disabled {
+            background: #cbd5e0;
+            color: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .start-project-btn.completed {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        /* Project Detail Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .detail-section {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .requirements-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+
+        .hints-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hints-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .hints-list li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        .code-workspace {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .workspace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .workspace-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .code-input {
+            width: 100%;
+            height: 300px;
+            background: #1a202c;
+            border: 2px solid #2d3748;
+            border-radius: 12px;
+            color: #e2e8f0;
+            padding: 20px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .code-input:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+
+        .workspace-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .output-section {
+            background: #1a202c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            color: #e2e8f0;
+        }
+
+        .output-header {
+            color: #e2e8f0;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .output-terminal {
+            background: #000;
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 150px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow-y: auto;
+        }
+
+        .success-text {
+            color: #48bb78;
+        }
+
+        .error-text {
+            color: #f56565;
+        }
+
+        .info-text {
+            color: #63b3ed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .level-info {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .level-overview {
+                padding: 25px;
+            }
+
+            .overview-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .level-stats {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚀 PyTerminal - Project Challenges</div>
+            <div class="level-info">
+                <div class="level-badge" id="currentLevel">Beginner Level</div>
+                <div class="project-progress">
+                    <div class="progress-text" id="progressText">0 of 6 projects completed</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-overview">
+            <div class="overview-header">
+                <div class="section-title">🎯 Beginner Level Projects</div>
+                <div class="level-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="completedCount">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCount">6</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Project Title</div>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="project-details">
+                    <div class="detail-section">
+                        <div class="detail-title">📋 Requirements</div>
+                        <ul class="requirements-list" id="requirementsList">
+                            <!-- Requirements will be populated here -->
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">💡 Hints</div>
+                        <ul class="hints-list" id="hintsList">
+                            <!-- Hints will be populated here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="code-workspace">
+                    <div class="workspace-header">
+                        <div class="workspace-title">⌨️ Code Editor</div>
+                        <div class="workspace-actions">
+                            <button class="btn" id="runCodeBtn">▶️ Run Code</button>
+                            <button class="btn" id="clearCodeBtn">🗑️ Clear</button>
+                            <button class="btn btn-success" id="submitProjectBtn">✅ Submit Project</button>
+                        </div>
+                    </div>
+                    <textarea class="code-input" id="codeInput" placeholder="# Write your Python code here..."></textarea>
+                </div>
+
+                <div class="output-section">
+                    <div class="output-header">📟 Output Console</div>
+                    <div class="output-terminal" id="outputTerminal">
+                        <span class="info-text">Ready to code! Write your solution above and click 'Run Code' to test it.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+</body>
+<script>
+    // PyTerminal Project Challenges Script
+class PyTerminalProjects {
+    constructor() {
+        this.pyodide = null;
+        this.currentProject = null;
+        this.projects = []; // Start with empty list
+        this.taskCount = 10; // Number of JSON task files to load
+        this.completedProjects = JSON.parse(localStorage.getItem('completedProjects') || '[]');
+        this.currentStreak = parseInt(localStorage.getItem('currentStreak') || '0');
+        this.init();
+    }
+
+
+    async init() {
+        await this.loadPyodide();
+        await this.loadProjectsFromJSON();  // ✅ Load tasks dynamically
+        this.setupEventListeners();
+        this.renderProjects();
+        this.updateProgress();
+    }
+    async loadProjectsFromJSON() {
+        for (let i = 1; i <= this.taskCount; i++) {
+            try {
+            const res = await fetch(`beginner_tasks/task${i}.json`);
+            const data = await res.json();
+            this.projects.push(data);
+            } catch (err) {
+            console.error(`Failed to load task${i}.json`, err);
+            }
+        }
+    }
+
+
+
+    async loadPyodide() {
+        try {
+            document.getElementById('outputTerminal').innerHTML = '<span class="info-text">Loading Python environment...</span>';
+            this.pyodide = await loadPyodide();
+            console.log('Pyodide loaded successfully');
+        } catch (error) {
+            console.error('Error loading Pyodide:', error);
+            document.getElementById('outputTerminal').innerHTML = '<span class="error-text">Error loading Python environment. Please refresh the page.</span>';
+        }
+    }
+
+    setupEventListeners() {
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', () => {
+            this.closeModal();
+        });
+
+        // Modal overlay click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                this.closeModal();
+            }
+        });
+
+        // Code editor actions
+        document.getElementById('runCodeBtn').addEventListener('click', () => {
+            this.runCode();
+        });
+
+        document.getElementById('clearCodeBtn').addEventListener('click', () => {
+            document.getElementById('codeInput').value = '';
+            document.getElementById('outputTerminal').innerHTML = '<span class="info-text">Code cleared. Ready for new code!</span>';
+        });
+
+        document.getElementById('submitProjectBtn').addEventListener('click', () => {
+            this.submitProject();
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('projectModal').classList.contains('show')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    renderProjects() {
+        const projectsGrid = document.getElementById('projectsGrid');
+        projectsGrid.innerHTML = '';
+
+        this.projects.forEach((project, index) => {
+            const isCompleted = this.completedProjects.includes(project.id);
+            const isLocked = index > 0 && !this.completedProjects.includes(this.projects[index - 1].id);
+            const isCurrent = !isCompleted && !isLocked;
+
+            const projectCard = document.createElement('div');
+            projectCard.className = `project-card ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''} ${isLocked ? 'locked' : ''}`;
+            
+            const difficultyClass = `difficulty-${project.difficulty}`;
+            const statusIcon = isCompleted ? '✅' : isLocked ? '🔒' : '🚀';
+            const statusText = isCompleted ? 'Completed' : isLocked ? 'Locked' : 'Available';
+            const buttonText = isCompleted ? 'Review Project' : 'Start Project';
+            const buttonClass = isCompleted ? 'completed' : '';
+
+            projectCard.innerHTML = `
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">${project.title}</div>
+                    </div>
+                    <div class="project-difficulty ${difficultyClass}">${project.difficulty}</div>
+                </div>
+                <div class="project-description">${project.description}</div>
+                <div class="project-tags">
+                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="project-status">
+                    <span class="status-icon">${statusIcon}</span>
+                    <span class="status-text">${statusText}</span>
+                </div>
+                <button class="start-project-btn ${buttonClass}" ${isLocked ? 'disabled' : ''}>
+                    ${buttonText}
+                </button>
+            `;
+
+            if (!isLocked) {
+                projectCard.querySelector('.start-project-btn').addEventListener('click', () => {
+                    this.openProject(project);
+                });
+            }
+
+            projectsGrid.appendChild(projectCard);
+        });
+    }
+
+    openProject(project) {
+        this.currentProject = project;
+        
+        // Populate modal content
+        document.getElementById('modalTitle').textContent = project.title;
+        
+        // Requirements
+        const requirementsList = document.getElementById('requirementsList');
+        requirementsList.innerHTML = '';
+        project.requirements.forEach(req => {
+            const li = document.createElement('li');
+            li.textContent = req;
+            requirementsList.appendChild(li);
+        });
+
+        // Hints
+        const hintsList = document.getElementById('hintsList');
+        hintsList.innerHTML = '';
+        project.hints.forEach(hint => {
+            const li = document.createElement('li');
+            li.textContent = hint;
+            hintsList.appendChild(li);
+        });
+
+        // Set starter code
+        document.getElementById('codeInput').value = project.starterCode;
+        
+        // Clear output
+        document.getElementById('outputTerminal').innerHTML = '<span class="info-text">Ready to code! Write your solution above and click \'Run Code\' to test it.</span>';
+
+        // Show modal
+        document.getElementById('projectModal').classList.add('show');
+    }
+
+    closeModal() {
+        document.getElementById('projectModal').classList.remove('show');
+        this.currentProject = null;
+    }
+
+    async runCode() {
+        if (!this.pyodide) {
+            document.getElementById('outputTerminal').innerHTML = '<span class="error-text">Python environment not ready. Please wait...</span>';
+            return;
+        }
+
+        const code = document.getElementById('codeInput').value;
+        if (!code.trim()) {
+            document.getElementById('outputTerminal').innerHTML = '<span class="error-text">Please enter some code to run.</span>';
+            return;
+        }
+
+        const outputTerminal = document.getElementById('outputTerminal');
+        outputTerminal.innerHTML = '<span class="info-text">Running code...</span>';
+
+        try {
+            // Capture stdout
+            this.pyodide.runPython(`
+                import sys
+                from io import StringIO
+                
+                # Capture stdout
+                old_stdout = sys.stdout
+                sys.stdout = StringIO()
+            `);
+
+            // Run the user's code
+            this.pyodide.runPython(code);
+
+            // Get the output
+            const output = this.pyodide.runPython(`
+                output = sys.stdout.getvalue()
+                sys.stdout = old_stdout
+                output
+            `);
+
+            if (output.trim()) {
+                outputTerminal.innerHTML = `<span class="success-text">Output:</span>\n${output}`;
+            } else {
+                outputTerminal.innerHTML = '<span class="info-text">Code executed successfully (no output).</span>';
+            }
+
+        } catch (error) {
+            outputTerminal.innerHTML = `<span class="error-text">Error:</span>\n${error.message}`;
+        }
+    }
+
+    submitProject() {
+        if (!this.currentProject) return;
+
+        const code = document.getElementById('codeInput').value;
+        if (!code.trim()) {
+            document.getElementById('outputTerminal').innerHTML = '<span class="error-text">Please write some code before submitting.</span>';
+            return;
+        }
+
+        // Simple validation - check if code contains key elements
+        const isValid = this.validateProjectCode(code);
+        
+        if (isValid) {
+            // Mark project as completed
+            if (!this.completedProjects.includes(this.currentProject.id)) {
+                this.completedProjects.push(this.currentProject.id);
+                this.currentStreak++;
+                localStorage.setItem('completedProjects', JSON.stringify(this.completedProjects));
+                localStorage.setItem('currentStreak', this.currentStreak.toString());
+            }
+
+            document.getElementById('outputTerminal').innerHTML = `
+                <span class="success-text">🎉 Congratulations!</span>
+                <span class="success-text">Project "${this.currentProject.title}" completed successfully!</span>
+                <span class="info-text">You can now proceed to the next project.</span>
+            `;
+
+            // Update UI
+            setTimeout(() => {
+                this.closeModal();
+                this.renderProjects();
+                this.updateProgress();
+            }, 2000);
+
+        } else {
+            document.getElementById('outputTerminal').innerHTML = `
+                <span class="error-text">Project requirements not met.</span>
+                <span class="info-text">Please review the requirements and try again.</span>
+                <span class="info-text">Make sure your code addresses all the listed requirements.</span>
+            `;
+        }
+    }
+
+    validateProjectCode(code) {
+        if (!this.currentProject) return false;
+
+        // Basic validation based on project requirements
+        const projectId = this.currentProject.id;
+        
+        switch (projectId) {
+            case 1: // Hello World Explorer
+                return code.includes('input(') && (code.includes('print(') || code.includes('f"') || code.includes("f'"));
+            
+            case 2: // Number Guessing Game
+                return code.includes('random') && code.includes('while') && code.includes('input(');
+            
+            case 3: // Calculator Pro
+                return code.includes('def ') && code.includes('while') && (code.includes('try') || code.includes('except'));
+            
+            case 4: // Word Counter Analyzer
+                return code.includes('split(') && code.includes('len(') && (code.includes('dict') || code.includes('{'));
+            
+            case 5: // Password Generator
+                return code.includes('random') && code.includes('string') && code.includes('def ');
+            
+            case 6: // File Organizer
+                return (code.includes('os') || code.includes('pathlib')) && code.includes('def ');
+            
+            default:
+                return true;
+        }
+    }
+
+    updateProgress() {
+        const completed = this.completedProjects.length;
+        const total = this.projects.length;
+        const percentage = (completed / total) * 100;
+
+        document.getElementById('progressText').textContent = `${completed} of ${total} projects completed`;
+        document.getElementById('progressFill').style.width = `${percentage}%`;
+        
+        document.getElementById('completedCount').textContent = completed;
+        document.getElementById('totalCount').textContent = total;
+        document.getElementById('currentStreak').textContent = this.currentStreak;
+
+        // Update level badge
+        const levelBadge = document.getElementById('currentLevel');
+        if (completed === total) {
+            levelBadge.textContent = 'Level Complete!';
+            levelBadge.style.background = 'linear-gradient(135deg, #f6ad55 0%, #ed8936 100%)';
+        } else {
+            levelBadge.textContent = 'Beginner Level';
+        }
+    }
+}
+
+// Initialize the application when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new PyTerminalProjects();
+});
+</script>
+</html>

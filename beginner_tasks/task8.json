@@ -1,0 +1,19 @@
+{
+  "id": 8,
+  "title": "Word Counter",
+  "description": "Read a text file and count how many words it contains.",
+  "difficulty": "beginner",
+  "tags": ["file_io", "strings", "split"],
+  "requirements": [
+    "Open a text file using open().",
+    "Read the contents using read().",
+    "Split the contents into words using split().",
+    "Count the number of words using len()."
+  ],
+  "hints": [
+    "Use read() to get text.",
+    "Use len(words) to count."
+  ],
+  "starterCode": "# Open file and read contents\n# Use split() to split words\n",
+  "expectedOutputExample": "The file contains 274 words."
+}

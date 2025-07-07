@@ -1,0 +1,20 @@
+{
+  "id": 4,
+  "title": "Odd or Even Game",
+  "description": "Ask user for numbers repeatedly and tell if it's odd or even. Allow exiting.",
+  "difficulty": "beginner",
+  "tags": ["loops", "input", "modulus"],
+  "requirements": [
+    "Use a loop to continuously ask the user for a number.",
+    "Check whether the number is odd or even using the modulus operator.",
+    "Exit the loop when the user types 'exit'.",
+    "Print appropriate messages for odd/even and exit."
+  ],
+  "hints": [
+    "Use while True loop.",
+    "Use if num % 2 == 0.",
+    "Break loop if user types 'exit'."
+  ],
+  "starterCode": "# Use a while loop to keep asking for numbers\n# Use % to check odd or even\n",
+  "expectedOutputExample": "Enter number: 5 → Odd\nEnter number: 8 → Even\nEnter number: exit → Bye!"
+}

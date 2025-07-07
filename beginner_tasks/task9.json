@@ -1,0 +1,19 @@
+{
+  "id": 9,
+  "title": "Grade Tracker",
+  "description": "Track student names and grades, calculate average, display top scorer.",
+  "difficulty": "beginner",
+  "tags": ["dict", "loops", "input"],
+  "requirements": [
+    "Ask the user to enter student names and grades.",
+    "Store data in a dictionary.",
+    "Calculate the average grade.",
+    "Identify the top scorer using max()."
+  ],
+  "hints": [
+    "Use max() to find top scorer.",
+    "Use sum()/len() for average."
+  ],
+  "starterCode": "# Use dictionary to store grades\n# Use loop to input multiple students\n",
+  "expectedOutputExample": "Topper: Asha - 96%"
+}

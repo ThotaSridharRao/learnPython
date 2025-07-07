@@ -1,0 +1,20 @@
+{
+  "id": 7,
+  "title": "Contact Book",
+  "description": "Let user add, view, and save contacts using dictionary and file.",
+  "difficulty": "beginner",
+  "tags": ["dict", "file_io", "input"],
+  "requirements": [
+    "Create an empty dictionary to hold contacts.",
+    "Ask the user to add new contacts (name and number).",
+    "Allow the user to view all contacts in the dictionary.",
+    "Save contacts to a file using write or json.dump()."
+  ],
+  "hints": [
+    "Use input() inside a loop.",
+    "Use open('contacts.txt', 'a') to save.",
+    "Use json.dump() for dict saving (optional)."
+  ],
+  "starterCode": "# Create an empty dictionary\n# Use a menu to add/view/save contacts\n",
+  "expectedOutputExample": "1. Add Contact\n2. View Contacts\n3. Save and Exit"
+}

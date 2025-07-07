@@ -1,0 +1,18 @@
+{
+  "id": 5,
+  "title": "Multiplication Table Generator",
+  "description": "Ask the user for a number and generate a multiplication table up to 10.",
+  "difficulty": "beginner",
+  "tags": ["for_loop", "range", "formatting"],
+  "requirements": [
+    "Ask the user to input a number.",
+    "Use a for loop to generate multiplication results from 1 to 10.",
+    "Print each line in the format: 5 x 2 = 10"
+  ],
+  "hints": [
+    "Use range(1, 11).",
+    "Use print(f\"{num} x {i} = {num*i}\")"
+  ],
+  "starterCode": "# Get number from user\n# Use for loop with range(1, 11)\n",
+  "expectedOutputExample": "5 x 1 = 5\n5 x 2 = 10\n...\n5 x 10 = 50"
+}

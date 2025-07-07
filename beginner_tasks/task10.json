@@ -1,0 +1,20 @@
+{
+  "id": 10,
+  "title": "Password Validator",
+  "description": "Check if a password meets rules (length, symbols, etc).",
+  "difficulty": "beginner",
+  "tags": ["strings", "conditions", "functions"],
+  "requirements": [
+    "Ask the user to input a password.",
+    "Ensure the password has at least 8 characters.",
+    "Ensure it includes both letters and digits.",
+    "Check for special characters like !, @, #, etc.",
+    "Print whether the password is strong or weak."
+  ],
+  "hints": [
+    "Use len(), isdigit(), isalpha()",
+    "Use any(char in '!@#$%' for char in pwd)"
+  ],
+  "starterCode": "# Get password from user\n# Write checks for length, symbol, etc\n",
+  "expectedOutputExample": "Password is strong!"
+}
