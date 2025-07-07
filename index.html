@@ -883,10 +883,107 @@ body {
 html {
     scroll-behavior: smooth;
 }
+/* Lesson Loader Overlay */
+.lesson-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.lesson-loader.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.lesson-loader.show .loader-content {
+    transform: scale(1);
+}
+
+.loader-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: bounce 1s infinite;
+}
+
+.loader-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.loader-subtitle {
+    font-size: 16px;
+    color: #718096;
+    margin-bottom: 20px;
+}
+
+.loader-progress {
+    width: 100%;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4299e1 0%, #3182ce 100%);
+    width: 0%;
+    transition: width 2s ease;
+    border-radius: 2px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Lesson Loader -->
+        <div class="lesson-loader" id="lessonLoader">
+            <div class="loader-content">
+                <div class="loader-icon">📚</div>
+                <div class="loader-title" id="loaderTitle">Loading Lesson...</div>
+                <div class="loader-subtitle" id="loaderSubtitle">Please wait while we prepare your next lesson</div>
+                <div class="loader-progress">
+                    <div class="loader-progress-bar" id="loaderProgressBar"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="header">
             <div class="logo">🐍 PyTerminal - Learn Python</div>
             <div class="progress-info">
@@ -991,6 +1088,52 @@ Status: Waiting for your code...</span>
         const lessonInfo = document.getElementById('lessonInfo');
         const lessonContainer = document.getElementById('lessonContainer'); // Added lessonContainer to DOM elements
         const taskPanel = document.getElementById('taskPanel'); // Added taskPanel to DOM elements
+        const lessonLoader = document.getElementById('lessonLoader');
+
+        /**
+         * Shows the lesson loader with chapter and lesson information
+         * @param {number} chapter - The chapter number
+         * @param {number} lesson - The lesson number
+         */
+        function showLessonLoader(chapter, lesson) {
+            const loader = document.getElementById('lessonLoader');
+            const loaderTitle = document.getElementById('loaderTitle');
+            const loaderSubtitle = document.getElementById('loaderSubtitle');
+            const loaderProgressBar = document.getElementById('loaderProgressBar');
+            
+            // Update loader text
+            loaderTitle.textContent = `Chapter ${chapter} - Lesson ${lesson}`;
+            loaderSubtitle.textContent = `Preparing your learning materials...`;
+            
+            // Reset progress bar
+            loaderProgressBar.style.width = '0%';
+            
+            // Show loader
+            loader.classList.add('show');
+            
+            // Animate progress bar
+            setTimeout(() => {
+                loaderProgressBar.style.width = '100%';
+            }, 100);
+        }
+
+        /**
+         * Hides the lesson loader
+         */
+        function hideLessonLoader() {
+            const loader = document.getElementById('lessonLoader');
+            loader.classList.remove('show');
+        }
+
+        /**
+         * Simulates loading delay with progress
+         * @param {number} duration - Duration in milliseconds
+         */
+        function simulateLoading(duration = 2000) {
+            return new Promise(resolve => {
+                setTimeout(resolve, duration);
+            });
+        }
 
         /**
          * Initializes Pyodide, loading the Python environment.
@@ -1293,8 +1436,6 @@ sys.stdout = _old_stdout # Restore original stdout
          * Navigates to the next lesson or chapter.
          */
         async function goToNextLesson() {
-            updateOutput("📦 Loading next lesson...", 'info');
-
             const lastLessonInCurrentChapter = await getLastLessonNumber(currentChapter);
             let nextLesson = currentLesson + 1;
             let targetChapter = currentChapter;
@@ -1305,7 +1446,6 @@ sys.stdout = _old_stdout # Restore original stdout
                 const nextChapterLessonCount = await getLastLessonNumber(targetChapter);
 
                 if (nextChapterLessonCount > 0) {
-                    updateOutput(`🎉 Chapter ${currentChapter} complete! Moving to Chapter ${targetChapter}...`, 'success');
                     nextLesson = 1; // Start from the first lesson of the new chapter
                 } else {
                     // No more lessons in the next chapter, end of course
@@ -1318,14 +1458,24 @@ sys.stdout = _old_stdout # Restore original stdout
                 }
             }
 
+            // Show loader with next lesson info
+            showLessonLoader(targetChapter, nextLesson);
+            
+            // Simulate loading time
+            await simulateLoading(1500);
+            
             // Update variables BEFORE loading lesson
             currentChapter = targetChapter;
             currentLesson = nextLesson;
 
             const success = await loadLesson(targetChapter, nextLesson);
+            
+            // Hide loader
+            hideLessonLoader();
+            
             if (success) {
                 updateOutput(`✅ Loaded Chapter ${currentChapter}, Lesson ${currentLesson}`, 'success');
-           } else {
+            } else {
                 // If loading next lesson fails, it means there are no more lessons
                 updateOutput("🎉 All lessons completed! Ready for practice tasks?", 'success');
                 nextBtn.textContent = "🎯 Go to Tasks";
