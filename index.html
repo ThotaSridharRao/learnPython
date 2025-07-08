@@ -1673,7 +1673,7 @@ sys.stdout = _old_stdout # Restore original stdout
 
             try {
                 // Attempt to load from a central exercises.json if it exists
-                const res = await fetch('exercises/exercises.json');
+                const res = await fetch('exercises.json');
                 if (res.ok) {
                     const data = await res.json();
                     const chapterData = data.chapters.find(c => c.id === chapter);
@@ -1865,7 +1865,7 @@ sys.stdout = _old_stdout # Restore original stdout
             // Load all chapter lesson counts initially to better estimate progress
             // This assumes 'exercises.json' exists and lists all chapters and their lessons.
             try {
-                const res = await fetch('exercises/exercises.json');
+                const res = await fetch('exercises.json');
                 if (res.ok) {
                     const data = await res.json();
                     totalChapters = data.chapters.length;
