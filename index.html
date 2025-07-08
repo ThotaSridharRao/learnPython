@@ -1480,6 +1480,7 @@ sys.stdout = _old_stdout # Restore original stdout
                 <div class="chapter-info">
                     <div class="chapter-title">${title}</div>
                     <div class="chapter-subtitle">${theory.concept}</div>
+                    <button class="btn btn-primary" id="voiceToggleBtn" onclick="toggleSpeech()">🔊 Listen to Explanation</button>
                 </div>
 
                 <div class="theory-section">
@@ -1529,6 +1530,69 @@ sys.stdout = _old_stdout # Restore original stdout
             // Update floating hint content
             updateHintContent(task.hints);
         }
+
+        function toggleSpeech() {
+            const btn = document.getElementById('voiceToggleBtn');
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel(); // Stop current speech
+                btn.textContent = '🔊 Listen to Explanation';
+                return;
+            }
+
+            const data = window.lessonData;
+            if (!data || !window.speechSynthesis) {
+                alert("Speech data not available.");
+                return;
+            }
+
+            const { theory, task } = data;
+            const speechText = `
+                ${data.title}.
+                Concept: ${theory.concept}.
+                Introduction: ${theory.introduction}.
+                Explanation: ${theory.explanation}.
+                Key points: ${theory.keyPoints.join(', ')}.
+                Important notes: ${theory.importantNotes.join(', ')}.
+                Task description: ${task.description}.
+                Expected output: ${task.expectedOutput}.
+            `;
+
+            const utterance = new SpeechSynthesisUtterance(speechText);
+            utterance.rate = 0.9;
+
+            // 🔁 Ensure voices are loaded first (important for Chrome)
+            const voices = speechSynthesis.getVoices();
+            if (!voices.length) {
+                speechSynthesis.onvoiceschanged = () => toggleSpeech(); // Retry once voices load
+                return;
+            }
+
+            // ✅ Prefer Microsoft Heera or Google UK English Female
+            const preferredVoice = voices.find(v =>
+                v.name === "Microsoft Heera" ||
+                v.name === "Google UK English Female"
+            );
+
+            if (preferredVoice) {
+                utterance.voice = preferredVoice;
+                utterance.lang = preferredVoice.lang;
+            } else {
+                console.warn("Preferred female Indian English voice not found. Using default voice.");
+            }
+
+            window.speechSynthesis.speak(utterance);
+            btn.textContent = '🔇 Mute Voice';
+
+            utterance.onend = () => {
+                btn.textContent = '🔊 Listen to Explanation';
+            };
+        }
+
+
+
+
+
 
         /**
          * Updates the content of the floating hint panel.
