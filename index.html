@@ -534,7 +534,7 @@ body {
 /* Navigation */
 .navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     margin-top: 30px;
     padding-top: 25px;
@@ -553,7 +553,7 @@ body {
     margin-top: 0; /* Adjusted for new position */
     padding: 20px 0; /* Retained horizontal padding */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     border-bottom: 1px solid #e2e8f0; /* Added bottom border for separation */
     margin-bottom: 30px; /* Space between nav and chapter info */
 }
@@ -564,7 +564,7 @@ body {
     border-radius: 25px;
     padding: 15px 25px;
     color: #234e52;
-    font-size: 16px;
+    font-size: 25px;
     font-weight: 600;
     min-width: 140px;
     text-align: center;
@@ -968,10 +968,250 @@ html {
         transform: translateY(-5px);
     }
 }
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    border-right: 1px solid #e2e8f0;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-header {
+    padding: 30px 25px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-content {
+    padding: 20px 0;
+}
+
+.chapter-item {
+    margin-bottom: 5px;
+}
+
+.chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.chapter-header:hover {
+    background: #f7fafc;
+}
+
+.chapter-header.active {
+    background: #ebf8ff;
+    color: #2c5282;
+    border-right: 3px solid #4299e1;
+}
+
+.chapter-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.chapter-header.expanded .chapter-arrow {
+    transform: rotate(90deg);
+}
+
+.lessons-list {
+    display: none;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.lessons-list.expanded {
+    display: block;
+}
+
+.lesson-item {
+    display: block;
+    padding: 12px 25px 12px 45px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.lesson-item:hover {
+    background: #e2e8f0;
+    color: #2d3748;
+}
+
+.lesson-item.active {
+    background: #4299e1;
+    color: white;
+    font-weight: 600;
+}
+
+.lesson-item.completed {
+    position: relative;
+}
+
+.lesson-item.completed::after {
+    content: '✓';
+    position: absolute;
+    right: 20px;
+    color: #48bb78;
+    font-weight: bold;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    z-index: 1001;
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sidebar-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 300px;
+        left: -300px;
+    }
+    
+    .sidebar-toggle {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>📚 Course Navigation</h3>
+                <button class="sidebar-close" id="sidebarClose">×</button>
+            </div>
+            <div class="sidebar-content" id="sidebarContent">
+                <!-- Navigation will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Sidebar Toggle Button -->
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <!-- Lesson Loader -->
         <div class="lesson-loader" id="lessonLoader">
             <div class="loader-content">
@@ -997,10 +1237,8 @@ html {
 
         <div class="theory-panel">
             <!-- Lesson Navigation moved here -->
-            <div class="lesson-navigation">
-                <button class="btn btn-navigation" id="prevBtn">⬅️ Previous</button>
+            <div class="lesson-navigation"> 
                 <div class="lesson-info" id="lessonInfo">Lesson 1</div>
-                <button class="btn btn-navigation" id="nextBtn">Next ➡️</button>
             </div>
             <div class="section-title">📚 Learning Material</div>
             <div id="lessonContainer"></div>
@@ -1075,8 +1313,6 @@ Status: Waiting for your code...</span>
         // DOM elements
         const runBtn = document.getElementById('runBtn');
         const clearBtn = document.getElementById('clearBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
         const floatingHintBtn = document.getElementById('floatingHintBtn');
         const floatingHintPanel = document.getElementById('floatingHintPanel');
         const hintCloseBtn = document.getElementById('hintCloseBtn');
@@ -1338,7 +1574,8 @@ sys.stdout = _old_stdout # Restore original stdout
          */
         function updateUI() {
             chapterInfo.textContent = `Chapter ${currentChapter} of ${totalChapters}`; // totalChapters is a placeholder
-            lessonInfo.textContent = `Lesson ${currentLesson}`;
+            lessonInfo.textContent = `Lesson ${currentChapter}.${currentLesson}`;
+
 
             // Update progress bar (rough estimation based on loaded lessons)
             // This calculation assumes maxLessonsPerChapter is populated.
@@ -1553,11 +1790,9 @@ sys.stdout = _old_stdout # Restore original stdout
             }
         });
 
-        nextBtn.addEventListener('click', goToNextLesson);
-        prevBtn.addEventListener('click', goToPreviousLesson);
-
         // Initialize the application on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', async function() {
+            await populateSidebar();
             updateOutput("🚀 Initializing Python environment...", 'info');
 
             // Setup Pyodide
@@ -1591,6 +1826,197 @@ sys.stdout = _old_stdout # Restore original stdout
 
             console.log('Application initialized');
         });
+    </script>
+    <script>
+        // Add these event listeners inside your DOMContentLoaded function
+        document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
+        document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+        document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+        // Populate sidebar
+        
+        // Sidebar functionality
+let sidebarOpen = false;
+
+/**
+ * Toggles the sidebar open/closed
+ */
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const toggle = document.getElementById('sidebarToggle');
+    
+    sidebarOpen = !sidebarOpen;
+    
+    if (sidebarOpen) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        toggle.classList.add('active');
+    } else {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        toggle.classList.remove('active');
+    }
+}
+
+/**
+ * Closes the sidebar
+ */
+function closeSidebar() {
+    if (sidebarOpen) {
+        toggleSidebar();
+    }
+}
+
+/**
+ * Populates the sidebar with chapters and lessons
+ */
+async function populateSidebar() {
+    const sidebarContent = document.getElementById('sidebarContent');
+    let sidebarHTML = '';
+    
+    try {
+        // Try to load from exercises.json first
+        const res = await fetch('exercises/exercises.json');
+        if (res.ok) {
+            const data = await res.json();
+            
+            for (const chapter of data.chapters) {
+                sidebarHTML += `
+                    <div class="chapter-item">
+                        <button class="chapter-header" onclick="toggleChapter(${chapter.id})">
+                            <span>Chapter ${chapter.id}</span>
+                            <span class="chapter-arrow">▶</span>
+                        </button>
+                        <div class="lessons-list" id="chapter-${chapter.id}-lessons">
+                            ${chapter.lessons.map(lesson => `
+                                <button class="lesson-item" onclick="navigateToLesson(${chapter.id}, ${lesson.id})">
+                                    Lesson ${lesson.id}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        } else {
+            throw new Error('exercises.json not found');
+        }
+    } catch (e) {
+        // Fallback: Create sidebar based on maxLessonsPerChapter
+        for (let chapterId = 1; chapterId <= totalChapters; chapterId++) {
+            const lessonCount = maxLessonsPerChapter[chapterId] || 5;
+            let lessonsHTML = '';
+            
+            for (let lessonId = 1; lessonId <= lessonCount; lessonId++) {
+                lessonsHTML += `
+                    <button class="lesson-item" onclick="navigateToLesson(${chapterId}, ${lessonId})">
+                        Lesson ${lessonId}
+                    </button>
+                `;
+            }
+            
+            sidebarHTML += `
+                <div class="chapter-item">
+                    <button class="chapter-header" onclick="toggleChapter(${chapterId})">
+                        <span>Chapter ${chapterId}</span>
+                        <span class="chapter-arrow">▶</span>
+                    </button>
+                    <div class="lessons-list" id="chapter-${chapterId}-lessons">
+                        ${lessonsHTML}
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
+    sidebarContent.innerHTML = sidebarHTML + `
+    <div class="chapter-item">
+        <button class="chapter-header" onclick="window.location.href='tasks.html'">
+            <span>📝 Tasks</span>
+        </button>
+    </div>
+    `;
+    updateSidebarActiveStates();
+}
+
+/**
+ * Toggles a chapter dropdown in the sidebar
+ */
+function toggleChapter(chapterId) {
+    const header = document.querySelector(`button[onclick="toggleChapter(${chapterId})"]`);
+    const lessonsList = document.getElementById(`chapter-${chapterId}-lessons`);
+    
+    const isExpanded = lessonsList.classList.contains('expanded');
+    
+    if (isExpanded) {
+        lessonsList.classList.remove('expanded');
+        header.classList.remove('expanded');
+    } else {
+        lessonsList.classList.add('expanded');
+        header.classList.add('expanded');
+    }
+}
+
+/**
+ * Navigates to a specific lesson
+ */
+async function navigateToLesson(chapter, lesson) {
+    // Show loader
+    showLessonLoader(chapter, lesson);
+    
+    // Simulate loading time
+    await simulateLoading(1000);
+    
+    // Update current chapter and lesson
+    currentChapter = chapter;
+    currentLesson = lesson;
+    
+    // Load the lesson
+    const success = await loadLesson(chapter, lesson);
+    
+    // Hide loader
+    hideLessonLoader();
+    
+    if (success) {
+        updateOutput(`✅ Loaded Chapter ${chapter}, Lesson ${lesson}`, 'success');
+        updateSidebarActiveStates();
+        closeSidebar();
+    } else {
+        updateOutput(`⚠️ Could not load Chapter ${chapter}, Lesson ${lesson}`, 'error');
+    }
+}
+
+/**
+ * Updates the active states in the sidebar
+ */
+function updateSidebarActiveStates() {
+    // Remove all active states
+    document.querySelectorAll('.chapter-header').forEach(header => {
+        header.classList.remove('active');
+    });
+    document.querySelectorAll('.lesson-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active state to current chapter
+    const currentChapterHeader = document.querySelector(`button[onclick="toggleChapter(${currentChapter})"]`);
+    if (currentChapterHeader) {
+        currentChapterHeader.classList.add('active');
+        
+        // Expand current chapter
+        const lessonsList = document.getElementById(`chapter-${currentChapter}-lessons`);
+        if (lessonsList) {
+            lessonsList.classList.add('expanded');
+            currentChapterHeader.classList.add('expanded');
+        }
+    }
+    
+    // Add active state to current lesson
+    const currentLessonItem = document.querySelector(`button[onclick="navigateToLesson(${currentChapter}, ${currentLesson})"]`);
+    if (currentLessonItem) {
+        currentLessonItem.classList.add('active');
+    }
+}
     </script>
 </body>
 </html>
