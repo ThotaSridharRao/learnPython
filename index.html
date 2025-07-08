@@ -1941,7 +1941,7 @@ async function populateSidebar() {
     
     try {
         // Try to load from exercises.json first
-        const res = await fetch('exercises/exercises.json');
+        const res = await fetch('exercises.json');
         if (res.ok) {
             const data = await res.json();
             
